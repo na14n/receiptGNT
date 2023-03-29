@@ -6,6 +6,7 @@
             <img src="" class="" alt="">
           </div>
           <ul class="mt-6 space-y-2">
+
             <li class="min-w-max">
               <a href="/dashboard" title="Dashboard" class="relative flex items-center space-x-4 bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white">
                 <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
@@ -49,12 +50,14 @@
         </div>
 
         <div class="w-max -mb-3">
-          <a href="/logout" title="Logout" class="group flex items-center space-x-4 rounded-md px-4 pb-12 text-gray-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 group-hover:fill-cyan-600" viewBox="0 0 20 20" fill="currentColor">
+          <form action="/logout" method="POST" class="group flex items-center space-x-4 rounded-md px-4 pb-12 text-gray-600">
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 group-hover:fill-cyan-600" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
                 <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
               </svg>
-             </a>
+            </button>
+            </form>
         </div>
         
       </div>

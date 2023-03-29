@@ -1,5 +1,5 @@
 <script>
-    import {Sidebar, PageTitle} from "$lib/components"
+    import {Sidebar, PageTitle, PageHeader} from "$lib/components"
 </script>
 
 <body class = "body bg-white dark:bg-[#0F172A] min-h-screen">
@@ -8,26 +8,16 @@
     <Sidebar/>
     
     <!--HEADER-->
-    <div class = "w-full flex bg-white dark:bg-[#0F172A] items-center justify-center pt-10 px-10">
-        <div class = "logo ml-12 text-gray-700 dark:text-white font-semibold  transform ease-in-out duration-500 flex-none h-full flex items-center justify-center">
-            Welcome User!
-        </div><span class="label"></span>
-        
-        <!-- SPACER -->
-        <div class = "grow h-full flex items-center justify-center"></div>
-        <div class = "flex-none h-full text-center flex items-center justify-center">
-               
-        </div>
-    </div>
+    <PageHeader header="Hello User" hidden="true" />
     <!--HEADER END-->
     
-
+    <PageTitle title="Dashboard" link="dashboard" i="fa-solid fa-house pr-2"/>
     <!-- CONTENT -->
 
-    <div class = "content ml-12 transform ease-in-out duration-500 pt-5 px-2 md:px-5 pb-4">
+    <div class = "content ml-12 transform ease-in-out duration-500 px-2 md:px-5 pb-4">
 
         <!-- PAGE CONTENT TITLE -->
-        <PageTitle title="Dashboard" link="dashboard" i="fa-solid fa-house pr-2"/>
+       
         
 
       <!--WEEKLY SALES-->

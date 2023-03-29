@@ -63,3 +63,18 @@ export const businessProfileSchema = z.object({
         .max(16, {message: 'Contact Information must be less than 16 characters.'})
         .trim(),
 })
+
+export const addProdSchema = z.object({
+    prod_name: z
+        .string({required_error: 'Name is required'})
+        .regex(/^[a-zA-Z\s]*$/, {message: 'Name can only contain letters and spaces'})
+        .min(2, {message: 'Name must be at least 2 characters.'})
+        .max(16, {message: 'Name must be less than 16 characters.'})
+        .trim(),
+    prod_price: z
+        .string({required_error: 'Price is required'})
+        .regex(/^[0-9]+$/, {message: 'Price can only contain numbers.'})
+        .min(1, {message: 'Please enter a valid Price'})
+        .max(6, {message: 'The Price must be less than a million pesos.'})
+        .trim()
+})

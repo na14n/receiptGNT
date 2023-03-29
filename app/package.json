@@ -32,6 +32,7 @@
 	"dependencies": {
 		"daisyui": "^2.51.5",
 		"pocketbase": "^0.13.0-rc",
-		"svelte-navigator": "^3.2.2"
+		"svelte-navigator": "^3.2.2",
+		"svelte-router": "^3.0.0-alpha.2"
 	}
 }
