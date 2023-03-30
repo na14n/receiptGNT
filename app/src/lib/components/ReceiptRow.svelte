@@ -52,10 +52,12 @@
             </div>
             <div slot="actions" class="flex w-full">
                 
-                <form action="?/updateProduct" method="POST" class="w-full">
-                    <Input class="text-blue-600" type="text" name="prod_name" id="prod_name" label="Product Name" placeholder="Your Product's Name" i="fa-solid fa-boxes-stacked pr-3" is="color:#2563eb" value=""/>
-                    <Input class="text-blue-600" type="text" name="prod_price" id="prod_price" label="Product Price" placeholder="The Product's Price" i="fa-solid fa-money-bill pr-3" is="color:#2563eb" value=""/>
-                    <input type="hidden" name="id" value="" />
+                <form action="?/updateReceipt" method="POST" class="w-full">
+                    <Input class="text-blue-600" type="text" name="c_name" id="c_name" label="Client Name" placeholder="Your Client's Name" i="fa-solid fa-user pr-3" is="color:#2563eb" value={receipt.c_name}/>
+                    <Input class="text-blue-600" type="text" name="c_address" id="c_address" label="Client Shipping Address" placeholder="The Client's Address" i="fa-solid fa-map-location-dot pr-3" is="color:#2563eb" value={receipt.c_address}/>
+                    <Input class="text-blue-600" type="text" name="c_contact" id="c_contact" label="Client Contact Information" placeholder="Your Client's Contacts" i="fa-solid fa-map-location-dot pr-3" is="color:#2563eb" value={receipt.c_contact}/>
+                    <a href="/receipt/addReceipt/{receipt.r_id}" class="text-blue-600 underline hover:text-blue-400">Edit your Products here.</a>
+                    <input type="hidden" name="id" value={receipt.id} />
                     <div class="flex justify-end gap-x-4 pr-5">
                         <label for="{receipt.id}" class="btn btn-ghost text-gray-500">Cancel</label>
                         <button class="btn btn-success hover:bg-emerald-300">Update</button>
@@ -65,7 +67,7 @@
         </Modal>
     </td>
     <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
-        <Modal label="{receipt.id}" checked={modalDeleteOpen}>
+        <Modal label="delete{receipt.id}" checked={modalDeleteOpen}>
             <span slot="trigger" class="text-red-500 cursor-pointer">Delete <i class="fa-regular fa-trash-can"></i> </span>
             <div slot="heading">
                 <h3 class="text-2xl mb-3">Delete {receipt.id}</h3>
@@ -77,10 +79,10 @@
                 </p>
             </div>
             <div slot="actions" class="flex w-full">
-                <form action="?/" method="POST" class="w-full">
-                    <input type="hidden" name="id" value="" />
+                <form action="?/deleteReceipt" method="POST" class="w-full">
+                    <input type="hidden" name="id" value={receipt.id} />
                     <div class="flex justify-end gap-x-4 pr-5">
-                        <label for="{receipt.id}" class="btn btn-ghost text-gray-500">Cancel</label>
+                        <label for="delete{receipt.id}" class="btn btn-ghost text-gray-500">Cancel</label>
                         <button class="btn btn-error hover:bg-rose-600">Delete</button>
                     </div>
                 </form>

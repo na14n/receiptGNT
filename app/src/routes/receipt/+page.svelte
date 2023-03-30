@@ -16,6 +16,7 @@
     <div class="pt-10 pr-20 pl-28 rounded-md dark:bg-dark-700">
         <div class=" flex items-center justify-between pb-6">  
         </div>
+        <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto shadow-lg shadow-slate-800/500 rounded-lg">
             <div class="inline-block min-w-full rounded-lg overflow-hidden">
                 <table class="min-w-full leading-normal bg-gray-100 dark:bg-gray-700 font-semibold">
                  <thead>
@@ -63,5 +64,6 @@
                     {/if}
                 </tbody>
             </table>
-    </div>
+            </div>
+        </div>
 </body>

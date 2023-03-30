@@ -49,11 +49,12 @@
                                 </thead>
                                 <tbody>
                                     {#if data.products.length === 0}
-                                        <p class="text-center-text-xl">You have no products.</p>
-                                        <a href="products/addProd" class="text-blue-600 no-underline hover:underline">Add One Here.</a>
-                                    {:else}
-                                        {#each data.products as product }
-                                            <ProductRow {product}/>
+                                        <tr>
+                                            <td colspan="100"><p class="text-center text-xl py-5">You have no products.</p></td>
+                                        </tr>
+                                            {:else}
+                                                {#each data.products as product }
+                                                <ProductRow {product}/>
                                         {/each}
                                     {/if}
                                 </tbody>
