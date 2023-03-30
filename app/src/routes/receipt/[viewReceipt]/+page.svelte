@@ -1,19 +1,11 @@
-<script>
-    import {PageTitle, ReceiptViewRow} from "$lib/components"
+<script src="$lib/html2canvas.js">
+    import {ReceiptViewRow} from "$lib/components" 
 
    export let data
 
-//    let printBtn = document.querySelector("#print");
-// //    let saveBtn = document.querySelector("#save");
-
-//    printBtn.addEventListener("click", function() {
-//      window.print();
-//    })
-
-
 </script>
 
-<style>
+<style> 
     @media print {
         .not-printable {display: none;}
     }
