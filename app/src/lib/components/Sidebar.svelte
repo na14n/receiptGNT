@@ -1,3 +1,12 @@
+<script>
+  const links = [
+    {id: 1, i: 'fa-solid fa-house', url: '/dashboard', active: true},
+    {id: 2, i: 'fa-solid fa-folder-open', url: '/inventory', active: false},
+    {id: 3, i: 'fa-solid fa-receipt', url: '/receipt', active: false},
+    {id: 4, i: 'fa-solid fa-circle-user', url: '/profile', active: false},
+  ]
+</script>
+
 <div class="min-h-screen bg-slate-100 dark:bg-[#1E293B] fixed pt-7">
     <div class="sidebar h-screen w-[3.35rem]">
       <div class="flex h-screen flex-col justify-between pt-2 pb-6">
@@ -5,7 +14,37 @@
           <div class="w-max p-2.5">
             <img src="" class="" alt="">
           </div>
-          <ul class="mt-6 space-y-2">
+
+          <!-- <ul class="mt-6 space-y-2">
+            {#each links as link, index}
+            <li class="min-w-max">
+              <a href="{link.url}" class="flex shrink-0 justify-center items-center space-x-4 px-4 py-4 text-cyan-400 text-xl hover:text-blue-600
+              {activeIndex === index ? 'bg-gray-800 text-white' : ''}
+              "
+              on:click|preventDefault="{() => handleClick(index)}"
+              >
+                <i class="{link.i}"></i>
+              </a>
+            </li>
+            {/each}
+          </ul> -->
+
+          <div class="mt-6 space-y-2">
+            <div class="min-w-max">
+              {#each links as link}
+                <a
+                  href="{link.url}"
+                  class="flex shrink-0 justify-center items-center space-x-4 px-4 py-7 text-slate-400 text-xl hover:text-blue-600 darl:text-slate-600"
+                  >
+                <i class="{link.i}"></i>
+                </a>
+              {/each}
+            </div>
+          </div>
+          
+
+
+          <!-- <ul class="mt-6 space-y-2">
 
             <li class="min-w-max">
               <a href="/dashboard" title="Dashboard" class="relative flex items-center space-x-4 bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white">
@@ -46,7 +85,7 @@
 
          
                 
-          </ul>
+          </ul> -->
         </div>
 
         <div class="w-max -mb-3">

@@ -19,31 +19,40 @@
     </td>
     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <p class="text-gray-900 whitespace-no-wrap">
-            {product.prod_name}
+            {product.expand.product.prod_name}
         </p>
     </td>
     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <p class="text-gray-900 whitespace-no-wrap">
-            ₱ {product.prod_price}
+            ₱ {product.expand.product.prod_price}
+        </p>
+    </td>
+    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        <p class="text-gray-900 whitespace-no-wrap">
+            {product.qty}
+        </p>
+    </td>
+    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        <p class="text-gray-900 whitespace-no-wrap">
+            ₱ {product.subtotal}
         </p>
     </td>
     <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
-        <Modal label="modalUpdateOpen" checked={modalUpdateOpen}>
-            <span slot="trigger" class="text-green-400 cursor-pointer">Edit <i class="fa-regular fa-pen-to-square"></i> </span>
+        <Modal label="{product.id}" checked={modalUpdateOpen}>
+            <span slot="trigger" class="text-green-400 cursor-pointer">Edit<i class="fa-regular fa-pen-to-square pl-2"></i> </span>
             <div slot="heading">
-                <h3 class="text-2xl mb-3">Edit Product</h3>
+                <h3 class="text-2xl mb-3">Update {product.expand.product.prod_name} Quantity</h3>
                 <p class="text-base font-normal text-gray-500 italic">
                     Are you sure you want to update this product?
                 </p>
             </div>
             <div slot="actions" class="flex w-full">
-                
                 <form action="?/updateProduct" method="POST" class="w-full">
-                    <Input class="text-blue-600" type="text" name="prod_name" id="prod_name" label="Product Name" placeholder="Your Product's Name" i="fa-solid fa-boxes-stacked pr-3" is="color:#2563eb" value={product.prod_name}/>
-                    <Input class="text-blue-600" type="text" name="prod_price" id="prod_price" label="Product Price" placeholder="The Product's Price" i="fa-solid fa-money-bill pr-3" is="color:#2563eb" value={product.prod_price}/>
+                    <Input class="text-blue-600" type="number" name="qty" id="qty" label="qty" placeholder="Product Quantity" i="fa-solid fa-money-bill pr-3" is="color:#2563eb" value=""/>
                     <input type="hidden" name="id" value="{product.id}" />
+                    <input type="hidden" name="product" value="{product.product}" />
                     <div class="flex justify-end gap-x-4 pr-5">
-                        <label for="modalUpdateOpen" class="btn btn-ghost text-gray-500">Cancel</label>
+                        <label for="{product.id}" class="btn btn-ghost text-gray-500">Cancel</label>
                         <button class="btn btn-success hover:bg-emerald-300">Update</button>
                     </div>
                 </form>
@@ -51,10 +60,10 @@
         </Modal>
     </td>
     <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
-        <Modal label="modalDeleteOpen" checked={modalDeleteOpen}>
-            <span slot="trigger" class="text-red-500 cursor-pointer">Delete <i class="fa-regular fa-trash-can"></i> </span>
+        <Modal label="{product.expand.product.id}" checked={modalDeleteOpen}>
+            <span slot="trigger" class="text-red-500 cursor-pointer">Delete<i class="fa-regular fa-trash-can pl-2"></i> </span>
             <div slot="heading">
-                <h3 class="text-2xl mb-3">Delete Product</h3>
+                <h3 class="text-2xl mb-3">Delete {product.expand.product.prod_name}</h3>
                 <p class="text-base font-normal text-gray-500 italic">
                     Are you sure you want to delete this product?
                 </p>
@@ -64,9 +73,9 @@
             </div>
             <div slot="actions" class="flex w-full">
                 <form action="?/deleteProduct" method="POST" class="w-full">
-                    <input type="hidden" name="id" value={product.id} />
+                    <input type="hidden" name="id" value="{product.id}" />
                     <div class="flex justify-end gap-x-4 pr-5">
-                        <label for="modalUpdateOpen" class="btn btn-ghost text-gray-500">Cancel</label>
+                        <label for="{product.expand.product.id}" class="btn btn-ghost text-gray-500">Cancel</label>
                         <button class="btn btn-error hover:bg-rose-600">Delete</button>
                     </div>
                 </form>
@@ -74,22 +83,3 @@
         </Modal>
     </td>
 </tr>
-
-
-<Modal label="modalUpdateOpen" checked={modalUpdateOpen}>
-    <div slot="heading">
-        <h3 class="text-2xl">Edit Product</h3>
-        <p class="text-base font-normal">
-            Are you sure you want to update this product?
-        </p>
-    </div>
-    <div slot="actions" class="flex w-full items-center justify-center space-x-2">
-        
-        <form action="?/updateProduct" method="POST">
-             
-            <input type="hidden" name="id" value="" />
-            <label for="modalUpdateOpen" class="btn btn-outline">Cancel</label>
-            <button class="btn">Update</button>
-        </form>
-    </div>
-</Modal>

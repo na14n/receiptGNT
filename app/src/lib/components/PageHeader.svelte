@@ -6,7 +6,7 @@
 </script>
 
 <div class = "w-full flex-column bg-white dark:bg-[#0F172A] items-center justify-center pt-5 pb-1">
-    <div class = "logo ml-12 text-xl text-gray-500 dark:text-slate-200 font-semibold  transform ease-in-out duration-500 h-full flex justify-between px-10">
+    <div class = "logo ml-12 text-xl text-gray-700 dark:text-slate-200 font-semibold  transform ease-in-out duration-500 h-full flex justify-between px-10">
         <span>{header}</span>
         <span>
             <a href={link} hidden={hidden}>

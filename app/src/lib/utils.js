@@ -9,6 +9,11 @@ export const generateUsername = (name) => {
     return `${name.slice(0,5)}${id}`
 }
 
+export const generateReceiptId = (name) => {
+    const id = randomBytes(2).toString('hex')
+    return `${name.slice(0,8)}${id}`
+}
+
 export const validateData = async (formData, schema) => {
     const body = Object.fromEntries(formData)
 
