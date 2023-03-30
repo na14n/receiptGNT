@@ -39,7 +39,7 @@
         </p>
     </td>
     <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
-        <a href="#" class="text-amber-600 cursor-pointer">View <i class="fa-regular fa-pen-to-square"></i></a>
+        <a href="/receipt/{receipt.id}" class="text-amber-600 cursor-pointer">View <i class="fa-regular fa-pen-to-square"></i></a>
     </td>
     <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
         <Modal label="{receipt.id}" checked={modalUpdateOpen}>
