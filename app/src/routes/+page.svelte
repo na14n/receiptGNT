@@ -1,9 +1,9 @@
-<body class="leading-normal tracking-normal text-gray-900" style="font-family: 'Source Sans Pro', sans-serif;">
+<body class="body bg-white dark:bg-[#0F172A] min-h-screen leading-normal tracking-normal text-gray-900" style="font-family: 'Source Sans Pro', sans-serif;">
 
 
-  <div class="h-screen pb-14 bg-slate-white">
-    <!--Nav-->
-    <div class="w-full container mx-auto p-1 pt-11">
+  <div class="h-screen bg-slate-white">
+    <!--Header-->
+    <div class="w-full container mx-auto p-1 pt-5">
         
       <div class="w-full flex items-center justify-between">
         <div class="flex items-center"><img class=" w-full h-14" src="logo.png" alt=""> 
@@ -12,7 +12,7 @@
     </div>
   
     <!--Main--> 
-    <div class="container pt-24 w-full md:pt-48 px-6 mx-auto flex flex-col md:flex-row place-content-center">
+    <div class="container py-10 w-full px-6 mx-auto flex flex-col md:flex-row place-content-center">
   
       <!--Left Col-->
       <div class="pt-1 flex flex-col w-full xl:w-2/5 justify-center overflow-y-hidden">
@@ -34,14 +34,14 @@
       </div>
       <!--Right Col-->
         <div class="pl-40">
-          <div class="block max-w-sm rounded-lg bg-white shadow-lg dark:bg-neutral-700">
+          <div class="block max-w-sm rounded-lg bg-blue-500 shadow-lg dark:bg-neutral-700">
 
           <div class="p-6">
             <h5
-              class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+              class="mb-3 text-2xl font-bold leading-tight text-sky-100 dark:text-neutral-50">
               What is it?
             </h5>
-            <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+            <p class="mb-4 text-base text-slate-300 dark:text-sky-200">
               Receipt Generator is a web-based application with the primary goal of providing efficient and reliable transcript of transaction
               made to online businesses around the Philippines. The generator app includes a variety of features that may be useful.
               online sellers to track their sales as easily as possible! What exactly are you waiting for?
