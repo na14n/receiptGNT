@@ -6,10 +6,8 @@
 
 <body class = "body bg-white dark:bg-[#0F172A] min-h-screen ">
 
-    <Sidebar />
-
     <!-- Header -->
-    <PageHeader header="Receipt Logs" name="New receipt" link="/receipt/addReceipt"/>
+    <PageHeader header="Receipt Logs" name="New receipt" link="/addReceipt"/>
 
     <PageTitle title="Receipt" link="receipt" i="fa-solid fa-receipt pr-2"/>
 
@@ -56,8 +54,7 @@
                     {#if data.receipts.length === 0}
                         <tr>
                             <td colspan="100">
-                                <p class="text-center text-xl pt-3">You have no Receipt</p>
-                                <p class="text-center py-3 text-blue-600"><a href="receipt/addReceipt" class="no-underline hover:underline">Add One Here</a></p>
+                                <p class="text-center text-xl pt-3">You have no Receipts</p>
                             </td>
                         </tr>
                             {:else}

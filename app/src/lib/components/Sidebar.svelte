@@ -1,10 +1,15 @@
 <script>
+  import { page } from '$app/stores'
   const links = [
-    {id: 1, i: 'fa-solid fa-house', url: '/dashboard', active: true},
-    {id: 2, i: 'fa-solid fa-folder-open', url: '/inventory', active: false},
-    {id: 3, i: 'fa-solid fa-receipt', url: '/receipt', active: false},
-    {id: 4, i: 'fa-solid fa-circle-user', url: '/profile', active: false},
+    {id: 1, i: 'fa-solid fa-house', url: '/dashboard', title: 'Dashboard'},
+    {id: 2, i: 'fa-solid fa-folder-open', url: '/inventory', title: 'Inventory'},
+    {id: 3, i: 'fa-solid fa-receipt', url: '/receipt', title: 'Receipt'},
+    {id: 4, i: 'fa-solid fa-circle-user', url: '/profile', title: 'Profile'},
   ]
+
+  let linker = $page.url.pathname;
+
+  console.log(linker)
 </script>
 
 <div class="min-h-screen bg-slate-100 dark:bg-[#1E293B] fixed pt-7">
@@ -34,7 +39,8 @@
               {#each links as link}
                 <a
                   href="{link.url}"
-                  class="flex shrink-0 justify-center items-center space-x-4 px-4 py-7 text-slate-400 text-xl hover:text-blue-600 darl:text-slate-600"
+                  class="flex shrink-0 justify-center items-center space-x-4 px-4 py-7 text-slate-400 text-xl
+                  hover:text-blue-600 dark:text-slate-600"
                   >
                 <i class="{link.i}"></i>
                 </a>

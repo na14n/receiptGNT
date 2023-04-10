@@ -5,7 +5,6 @@
 <body class = "body bg-white dark:bg-[#0F172A] min-h-screen">
 
     <!--SIDEBAR-->
-    <Sidebar/>
     
     <!--HEADER-->
     <PageHeader header="Hello User" hidden="true" />

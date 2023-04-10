@@ -25,7 +25,6 @@ export const load = async ({locals}) => {
 export const actions = {
     deleteReceipt: async ({request, locals}) => {
         const {id} = Object.fromEntries(await request.formData())
-        // console.log(id);
          try {
             await locals.pb.collection('receipts').delete(id)
          } catch (err) {

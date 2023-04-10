@@ -35,6 +35,6 @@ export const actions = {
         throw error(err.status, err.message);
     }
 
-        throw redirect(303, '/inventory')
+        throw redirect(303, '/app/inventory')
     }
 }

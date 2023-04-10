@@ -1,15 +1,14 @@
 <script>
-    import { Sidebar, PageTitle, PageHeader, ProductRow} from "$lib/components"
+    import { PageTitle, PageHeader, ProductRow} from "$lib/components"
 
     export let data
 </script>
 
+
 <body class = "body bg-white dark:bg-[#0F172A] min-h-screen ">
     
-    <Sidebar />
-
     <!-- Header -->
-    <PageHeader header="Inventory Management" name="Add Product" link="/inventory/addProd"/>
+    <PageHeader header="Inventory Management" name="Add Product" link="/addProd"/>
     
 
     <!-- Content -->
@@ -52,7 +51,6 @@
                                         <tr>
                                             <td colspan="100">
                                                 <p class="text-center text-xl pt-3 py-1">You have no products</p>
-                                                <p class="text-center py-3 text-blue-600"><a href="inventory/addProd" class="no-underline hover:underline">Add One Here</a></p>
                                             </td>
                                             
                                         </tr>

@@ -3,7 +3,7 @@ import { generateReceiptId } from "$lib/utils"
 
 export const load = async ({locals}) => {
     if ((!locals.pb.authStore.isValid && locals.user.have_profile === false))  {
-        throw redirect(303, '/dashboard')
+        throw redirect(303, '/signin')
     }
 
 }
@@ -26,6 +26,6 @@ export const actions = {
         }
         
         
-        throw redirect(303, '/receipt/addReceipt/'+r_id)
+        throw redirect(303, '/addReceipt/'+r_id)
     }
 }

@@ -6,7 +6,7 @@ export const load = async ({locals}) => {
     if(!locals.pb.authStore.isValid) {
         throw redirect(303, '/signin')
     } else {
-        throw redirect('303', '/profile/myProfile')
+        throw redirect('303', '/app/dashboard')
     }
 
 }

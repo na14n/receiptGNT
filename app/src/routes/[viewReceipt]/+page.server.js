@@ -11,7 +11,7 @@ export const load = async ({locals, params}) => {
             const r_prod = serializeNonPOJOs(await locals.pb.collection('receipt_products').getFullList(undefined, {
                 filter: 'receipt = "'+receiptId+'"', expand: 'product'
             }))
-            // console.log(r_prod);
+
             return r_prod
         } catch (err) {
             console.log('Error: ',err);
