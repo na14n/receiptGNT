@@ -5,7 +5,7 @@ import { registerSchema } from "$lib/schemas"
 
 export const load = async ({locals}) => {
     if (locals.pb.authStore.isValid) {
-        throw redirect(303, '/dashboard')
+        throw redirect(303, '/app/dashboard')
     }
 }
 

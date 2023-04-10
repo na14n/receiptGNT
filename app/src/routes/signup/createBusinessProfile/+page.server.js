@@ -1,19 +1,18 @@
 import { error, fail, redirect } from "@sveltejs/kit"
 import { validateData} from "$lib/utils"
 import { businessProfileSchema } from "$lib/schemas"
-// export const load = async ({locals}) => {
-//     if ((!locals.pb.authStore.isValid) && (locals.user.have_profile === true)){
-//         throw redirect(303, '/dashboard')
-//     }
+export const load = async ({locals}) => {
+    if ((!locals.pb.authStore.isValid) && (locals.user.have_profile === true)){
+        throw redirect(303, '/app/dashboard')
+    }
 
-// }
+}
 
 export const actions = {
     createProfile: async ({request, locals}) => {
 
         const {formData, errors} = await validateData(await request.formData(), businessProfileSchema)
 
-        // const formData = Object.fromEntries(await request.formData())
         const user = locals.user.id
 
         if (errors) {
@@ -31,6 +30,6 @@ export const actions = {
             throw error(err.status, err.messsage)
         }
 
-        throw redirect(303, '/dashboard')
+        throw redirect(303, '/app/dashboard')
     }
 }

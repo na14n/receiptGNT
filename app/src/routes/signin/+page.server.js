@@ -4,7 +4,7 @@ import { loginSchema } from "$lib/schemas"
 
 export const load = async ({locals, params}) => {
     if (locals.pb.authStore.isValid) {
-        throw redirect(303, '/dashboard')
+        throw redirect(303, '/app/dashboard')
     }
 }
 
@@ -31,7 +31,7 @@ export const actions = {
         throw error(err.status, err.message);
     }
 
-    throw redirect(303, '/dashboard')
+    throw redirect(303, '/app/dashboard')
 
     }
 }
