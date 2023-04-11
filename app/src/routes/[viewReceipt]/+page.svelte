@@ -51,13 +51,13 @@
                     <div class="mb-2 text-slate-500 text-m font-medium uppercase">
                         from
                     </div>
-                    <div class="mb-4 text-slate-700 text-s font-bold">
+                    <div class="text-slate-700 text-s font-bold">
                        {data.user.b_name}
                     </div>
-                    <div class="mb-1 text-slate-700 text-s font-medium">
+                    <div class="mb-1 text-slate-700 text-sm font-medium">
                         {data.user.b_address}
                      </div>
-                     <div class="text-slate-700 text-s font-medium">
+                     <div class="text-slate-700 text-sm font-medium">
                         {data.user.b_contact}
                      </div>
                 </div>
@@ -68,13 +68,13 @@
                     <div class="mb-2 text-slate-500 text-m font-medium uppercase">
                         to
                     </div>
-                    <div class="mb-4 text-slate-700 text-s font-bold">
+                    <div class="text-slate-700 text-s font-bold">
                        {data.record.c_name}
                     </div>
-                    <div class="mb-1 text-slate-700 text-s font-medium">
+                    <div class="mb-1 text-slate-700 text-sm font-medium">
                         {data.record.c_address}
                      </div>
-                     <div class="text-slate-700 text-s font-medium">
+                     <div class="text-slate-700 text-sm font-medium">
                         {data.record.c_contact}
                      </div>
                 </div>

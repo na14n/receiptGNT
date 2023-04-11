@@ -37,6 +37,7 @@
             ₱ {product.subtotal}
         </p>
     </td>
+    
     <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
         <Modal label="{product.id}" checked={modalUpdateOpen}>
             <span slot="trigger" class="text-green-400 cursor-pointer">Edit<i class="fa-regular fa-pen-to-square pl-2"></i> </span>

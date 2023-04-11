@@ -11,6 +11,9 @@ export const load = async ({locals}) => {
             const products = serializeNonPOJOs(await locals.pb.collection('products').getFullList(undefined, {
                 filter: 'user = "'+userId+'"'
             }))
+            let date = products.map(x => x.created)
+            // var pop = date[1].slice(0, date[1].indexOf(' '))
+
             return products
         } catch (err) {
             console.log('Error: ',err);

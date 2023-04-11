@@ -7,7 +7,7 @@
 </script>
 
 <tr>
-    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+    <td class="px-3 py-5 border-b border-gray-200 bg-white text-sm">
         <div class="flex items-center">
             
                 <div class="ml-3">
@@ -22,12 +22,22 @@
             {product.prod_name}
         </p>
     </td>
-    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+    <td class="px-3 py-5 border-b border-gray-200 bg-white text-sm">
         <p class="text-gray-900 whitespace-no-wrap">
             ₱ {product.prod_price}
         </p>
     </td>
-    <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
+    <td class="px-1 py-5 border-b border-gray-200 bg-white text-sm">
+        <p class="text-gray-900 whitespace-no-wrap">
+            {product.created.slice(0, product.created.indexOf(' '))}
+        </p>
+    </td>
+    <td class="px-1 py-5 border-b border-gray-200 bg-white text-sm">
+        <p class="text-gray-900 whitespace-no-wrap">
+            {product.updated.slice(0, product.created.indexOf(' '))}
+        </p>
+    </td>
+    <td class="py-5 border-b border-gray-200 bg-white text-sm">
         <Modal label="update{product.prod_name}" checked={modalUpdateOpen}>
             <span slot="trigger" class="text-green-400 cursor-pointer">Edit <i class="fa-regular fa-pen-to-square"></i> </span>
             <div slot="heading">
@@ -50,7 +60,7 @@
             </div>
         </Modal>
     </td>
-    <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
+    <td class="py-5 border-b border-gray-200 bg-white text-sm">
         <Modal label="delete{product.id}" checked={modalDeleteOpen}>
             <span slot="trigger" class="text-red-500 cursor-pointer">Delete <i class="fa-regular fa-trash-can"></i> </span>
             <div slot="heading">

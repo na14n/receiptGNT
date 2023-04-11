@@ -8,7 +8,7 @@
 </script>
 
 <tr>
-    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+    <td class="px-3 py-5 border-b border-gray-200 bg-white text-sm">
         <div class="flex items-center">
             
                 <div class="ml-3">
@@ -18,7 +18,7 @@
                 </div>
             </div>
     </td>
-    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+    <td class="px-3 py-5 border-b border-gray-200 bg-white text-sm">
         <p class="text-gray-900 whitespace-no-wrap">
             {receipt.c_name}
         </p>
@@ -33,15 +33,25 @@
             {receipt.c_address}
         </p>
     </td>
-    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+    <!-- <td class="px-3 py-5 border-b border-gray-200 bg-white text-sm">
         <p class="text-gray-900 whitespace-no-wrap">
             ₱ {receipt.total}
         </p>
+    </td> -->
+    <td class="px-1 py-5 border-b border-gray-200 bg-white text-sm">
+        <p class="text-gray-900 whitespace-no-wrap">
+            {receipt.created.slice(0, receipt.created.indexOf(' '))}
+        </p>
     </td>
-    <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
+    <td class="px-1 py-5 border-b border-gray-200 bg-white text-sm">
+        <p class="text-gray-900 whitespace-no-wrap">
+            {receipt.updated.slice(0, receipt.created.indexOf(' '))}
+        </p>
+    </td>
+    <td class=" py-5 border-b border-gray-200 bg-white text-sm">
         <a href="/{receipt.id}" class="text-amber-600 cursor-pointer">View <i class="fa-regular fa-pen-to-square"></i></a>
     </td>
-    <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
+    <td class=" py-5 border-b border-gray-200 bg-white text-sm">
         <Modal label="{receipt.id}" checked={modalUpdateOpen}>
             <span slot="trigger" class="text-emerald-600 cursor-pointer">Edit <i class="fa-regular fa-pen-to-square"></i> </span>
             <div slot="heading">
@@ -66,7 +76,7 @@
             </div>
         </Modal>
     </td>
-    <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
+    <td class=" py-5 border-b border-gray-200 bg-white text-sm">
         <Modal label="delete{receipt.id}" checked={modalDeleteOpen}>
             <span slot="trigger" class="text-red-500 cursor-pointer">Delete <i class="fa-regular fa-trash-can"></i> </span>
             <div slot="heading">
