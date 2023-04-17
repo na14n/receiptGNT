@@ -1,5 +1,5 @@
 <script>
-    import { Sidebar, PageTitle, PageHeader, ProductRow} from "$lib/components"
+    import {PageHeader} from "$lib/components"
     import { page } from '$app/stores'
 
 
@@ -35,6 +35,7 @@
             href: '/profile/myAccount'
         },
     ]
+
 
 </script>
 
@@ -90,7 +91,7 @@
         </div>
     </div>
 
-    <PageHeader header="My Profile" hidden="true"/>
+    <PageHeader header="Profile" hidden="true"/>
 
     <div class="content not-printable ml-12 transform ease-in-out duration-500 pt-5 px-2 md:px-5">
         <nav class = "flex justify-between px-5 py-3 white-700  rounded-lg bg-slate-200 dark:bg-[#1E293B]">

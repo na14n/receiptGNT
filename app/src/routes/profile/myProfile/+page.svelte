@@ -1,8 +1,11 @@
 <script>
+    import {PageHeader} from "$lib/components"
     export let data
 </script>
 
-<body class = "body bg-white dark:bg-[#0F172A] min-h-screen overflow-hidden">
+<body>
+
+    <PageHeader header="My Profile" hidden="true"/>
 
      <div class = "mt-10 ml-12 transform ease-in-out duration-500 h-full flex-column px-10">
         <div  class="font-semibold text-s text-slate-400 dark:text-slate-200">
