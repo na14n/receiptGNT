@@ -102,8 +102,8 @@ export const actions = {
         const subtotal = prod_rec.prod_price*qty
         formData.append('subtotal', subtotal)
          try {
-            console.log(id);
-            
+            console.log(formData);
+            await locals.pb.collection('receipt_products').update(id, {qty: qty})
          } catch (err) {
             console.log('Error: ', err)
             throw error(err.status, err.message)

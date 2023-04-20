@@ -1,5 +1,6 @@
 <script>
     import {PageHeader} from "$lib/components"
+    import { Icon, Pencil } from "svelte-hero-icons";
 
     const showPreview = (event) => {
         const target = event.target
@@ -28,7 +29,8 @@
                     <label for="avatar" class="avatar w-32 rounded-full hover:cursor-pointer" >
                         <div for="" class="absolute -bottom-0.5 -right-0.5 hover:cursor-pointer">
                             <span class="btn btn-circle btn-sm bg-blue-600 border-0 text-slate-50 hover:bg-blue-500 active:text-slate-700">
-                                <i class="fa-solid fa-pen"></i>
+                                <!-- <i class="fa-solid fa-pen"></i> -->
+                                <Icon src={Pencil} solid size="16"/>
                             </span>
                         </div>
                         <div class="w-32 rounded-full">

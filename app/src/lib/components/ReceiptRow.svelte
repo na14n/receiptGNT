@@ -66,7 +66,7 @@
                     <Input class="text-blue-600" type="text" name="c_name" id="c_name" label="Client Name" placeholder="Your Client's Name" i="fa-solid fa-user pr-3" is="color:#2563eb" value={receipt.c_name}/>
                     <Input class="text-blue-600" type="text" name="c_address" id="c_address" label="Client Shipping Address" placeholder="The Client's Address" i="fa-solid fa-map-location-dot pr-3" is="color:#2563eb" value={receipt.c_address}/>
                     <Input class="text-blue-600" type="text" name="c_contact" id="c_contact" label="Client Contact Information" placeholder="Your Client's Contacts" i="fa-solid fa-map-location-dot pr-3" is="color:#2563eb" value={receipt.c_contact}/>
-                    <a href="/receipt/addReceipt/{receipt.r_id}" class="text-blue-600 underline hover:text-blue-400">Edit your Products here.</a>
+                    <a href="/addReceipt/{receipt.r_id}" class="text-blue-600 underline hover:text-blue-400">Edit your Products here.</a>
                     <input type="hidden" name="id" value={receipt.id} />
                     <div class="flex justify-end gap-x-4 pr-5">
                         <label for="{receipt.id}" class="btn btn-ghost text-gray-500">Cancel</label>

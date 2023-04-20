@@ -1,5 +1,6 @@
 <script>
     import {PageHeader} from "$lib/components"
+
     export let data
 </script>
 
