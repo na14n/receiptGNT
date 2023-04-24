@@ -6,11 +6,13 @@
             title: 'dashboard',
             href: '/app/dashboard',
             i: 'fa-solid fa-house'
+
         },
         {
             title: 'products',
             href: '/app/inventory',
             i: 'fa-solid fa-folder-open'
+            
         },
         {
             title: 'receipt',
