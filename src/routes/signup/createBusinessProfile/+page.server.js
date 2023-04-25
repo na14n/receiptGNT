@@ -13,7 +13,6 @@ export const actions = {
 
         const {formData, errors} = await validateData(await request.formData(), businessProfileSchema)
 
-        const user = locals.user.id
 
         if (errors) {
             return fail(400, {
@@ -23,7 +22,8 @@ export const actions = {
     }
 
         try {
-            await locals.pb.collection('business_profile').create({user, ...formData})
+            console.log({user: 'lnofmn99ub6oq5h', ...formData});
+            await locals.pb.collection('business_profile').create({user: locals.user.id, ...formData})
             await locals.pb.collection('users').update(locals.user.id, {have_profile: true})
         } catch (err) {
             console.log('Error: ', err);
