@@ -22,7 +22,6 @@ export const actions = {
     }
 
         try {
-            console.log({user: 'lnofmn99ub6oq5h', ...formData});
             await locals.pb.collection('business_profile').create({user: locals.user.id, ...formData})
             await locals.pb.collection('users').update(locals.user.id, {have_profile: true})
         } catch (err) {
