@@ -8,6 +8,15 @@ export const loginSchema = z.object({
     .min(1, {message: 'Please enter a Password'})
 })
 
+const imageTypes = [
+    'image/jpeg',
+    'image/jpg',
+    'image/png',
+    'image/webp',
+    'image/svg+xml',
+    'image/gif'
+]
+
 export const registerSchema = z.object({
     name: z
         .string({required_error: 'Name is required'})
@@ -62,6 +71,28 @@ export const businessProfileSchema = z.object({
         .min(2, {message: 'Contact Information must be at least 2 characters.'})
         .max(16, {message: 'Contact Information must be less than 16 characters.'})
         .trim(),
+    b_img: z 
+        .instanceof(Blob)
+        .optional()
+        .superRefine((val, ctx) => {
+            if (val) {
+                if (val.size > 5000000) {
+                    ctx.addIssue({
+                        code: z.ZodIssueCode.custom,
+                        message: 'File must be less than 5mb'
+                    });
+                }
+
+                if(!imageTypes.includes(val.type)) {
+                    ctx.addIssue({
+                        code: z.ZodIssueCode.custom,
+                        message: 'Unsupported File Type. Please upload jpeg, jpg, png, or webp files only.'
+                    });
+                }
+                 
+            }
+
+        })
 })
 
 export const addProdSchema = z.object({

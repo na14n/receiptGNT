@@ -65,7 +65,7 @@
               {top.prod_name}
           </p>
           <p class="text-m text-left opacity-75 text-green-300 dark:text-green-200">
-            sold <span class="font-bold">{top.total_orders} times</span>
+            sold <span class="font-bold">{top.total_orders >= 0 ? `${top.total_orders}` : '0'} times</span>
         </p>
         </div>
         </div>
@@ -85,7 +85,7 @@
                 {least.prod_name}
             </p>
             <p class="text-m text-left opacity-75 text-red-300 dark:text-red-200">
-              sold <span class="font-bold">{least.total_orders} times</span>
+              sold <span class="font-bold">{least.total_orders >= 0 ? `${least.total_orders}` : '0'} times</span>
           </p>
           </div>
           </div>

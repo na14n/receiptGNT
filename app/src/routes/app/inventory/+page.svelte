@@ -58,7 +58,7 @@
                                     {#if data.products.length === 0}
                                         <tr>
                                             <td colspan="100">
-                                                <p class="text-center text-xl pt-3 py-1">You have no products</p>
+                                                <p class="text-center text-m py-6">You have no products.</p>
                                             </td>
                                             
                                         </tr>

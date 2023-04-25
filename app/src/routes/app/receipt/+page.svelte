@@ -62,7 +62,7 @@
                     {#if data.receipts.length === 0}
                         <tr>
                             <td colspan="100">
-                                <p class="text-center text-xl pt-3">You have no Receipts</p>
+                                <p class="text-center text-m py-6">You have no Receipts.</p>
                             </td>
                         </tr>
                             {:else}
