@@ -4,42 +4,62 @@
     let modalUpdateOpen
     let modalDeleteOpen
     export let product 
+
+    // let date = product.created.slice(0, product.created.indexOf(' '))
+    // let time = product.created
+    // console.log(date)
+    // console.log(time)
+
+    let createdDate = new Date(product.created)
+    const cyear = createdDate.getFullYear();
+    const cmonth = createdDate.getMonth() + 1; // add 1 to month value to get correct month (January is 0)
+    const cday = createdDate.getDate();
+    const created = `${cyear}-${cmonth < 10 ? '0' : ''}${cmonth}-${cday < 10 ? '0' : ''}${cday}`;
+
+    let updatedDate = new Date(product.created)
+    const uyear = updatedDate.getFullYear();
+    const umonth = updatedDate.getMonth() + 1; // add 1 to month value to get correct month (January is 0)
+    const uday = updatedDate.getDate();
+    const updated = `${uyear}-${umonth < 10 ? '0' : ''}${umonth}-${uday < 10 ? '0' : ''}${uday}`;
+    
+
+
 </script>
 
-<tr>
-    <td class="px-3 py-5 border-b border-gray-200 bg-white text-sm">
+<tr class="bg-white dark:bg-slate-600 ">
+    <td class="px-3 py-5 border-b border-gray-200 text-sm dark:border-gray-500">
         <div class="flex items-center">
             
                 <div class="ml-3">
-                    <p class="text-gray-900 whitespace-no-wrap">
+                    <p class="text-gray-900 whitespace-no-wrap dark:text-neutral-50">
                         {product.id}
                     </p>
                 </div>
             </div>
     </td>
-    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p class="text-gray-900 whitespace-no-wrap">
+    <td class="px-5 py-5 border-b border-gray-200 text-sm dark:border-gray-500">
+        <p class="text-gray-900 whitespace-no-wrap dark:text-neutral-50">
             {product.prod_name}
         </p>
     </td>
-    <td class="px-3 py-5 border-b border-gray-200 bg-white text-sm">
-        <p class="text-gray-900 whitespace-no-wrap">
+    <td class="px-3 py-5 border-b border-gray-200 text-sm dark:border-gray-500">
+        <p class="text-gray-900 whitespace-no-wrap dark:text-neutral-50">
             ₱ {product.prod_price}
         </p>
     </td>
-    <td class="px-1 py-5 border-b border-gray-200 bg-white text-sm">
-        <p class="text-gray-900 whitespace-no-wrap">
-            {product.created.slice(0, product.created.indexOf(' '))}
+    <td class="px-1 py-5 border-b border-gray-200 text-sm dark:border-gray-500">
+        <p class="text-gray-900 whitespace-no-wrap dark:text-neutral-50">
+            {created}
         </p>
     </td>
-    <td class="px-1 py-5 border-b border-gray-200 bg-white text-sm">
-        <p class="text-gray-900 whitespace-no-wrap">
-            {product.updated.slice(0, product.created.indexOf(' '))}
+    <td class="px-1 py-5 border-b border-gray-200 text-sm dark:border-gray-500">
+        <p class="text-gray-900 whitespace-no-wrap dark:text-neutral-50">
+            {updated}
         </p>
-    </td>
-    <td class="py-5 border-b border-gray-200 bg-white text-sm">
+    </td> 
+    <td class="py-5 border-b border-gray-200 text-sm dark:border-gray-500">
         <Modal label="update{product.prod_name}" checked={modalUpdateOpen}>
-            <span slot="trigger" class="text-green-400 cursor-pointer">Edit <i class="fa-regular fa-pen-to-square"></i> </span>
+            <span slot="trigger" class="text-green-400 cursor-pointer dark:text-green-400">Edit <i class="fa-regular fa-pen-to-square"></i> </span>
             <div slot="heading">
                 <h3 class="text-2xl mb-3">Edit {product.prod_name}</h3>
                 <p class="text-base font-normal text-gray-500 italic">
@@ -60,7 +80,7 @@
             </div>
         </Modal>
     </td>
-    <td class="py-5 border-b border-gray-200 bg-white text-sm">
+    <td class="py-5 border-b border-gray-200 text-sm dark:border-gray-500">
         <Modal label="delete{product.id}" checked={modalDeleteOpen}>
             <span slot="trigger" class="text-red-500 cursor-pointer">Delete <i class="fa-regular fa-trash-can"></i> </span>
             <div slot="heading">

@@ -1,5 +1,6 @@
 <script>
     import { page } from '$app/stores'
+    import { Router, Route } from "svelte-routing";
 
     const navigation = [
         {
@@ -40,7 +41,7 @@
                       href="{navItem.href}"
                       class="flex shrink-0 justify-center items-center space-x-4 px-4 py-4 mb-3 text-slate-400 text-xl
                       hover:text-blue-600 dark:text-slate-600
-                      {$page.url.pathname == navItem.href ? 'text-slate-50 bg-gradient-to-r from-cyan-500 to-blue-500 hover:text-slate-50' : '' }"
+                      {$page.url.pathname == navItem.href ? 'text-slate-50 bg-gradient-to-r from-cyan-500 to-blue-500 hover:text-slate-50 dark:hover:text-zinc-300 dark:text-zinc-100' : '' }"
                       >
                     <i class="{navItem.i}"></i>
                     </a>

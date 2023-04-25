@@ -7,6 +7,7 @@ import ProductRow from "./ProductRow.svelte"
 import ReceiptRow from "./ReceiptRow.svelte"
 import ReceiptProdRow from "./ReceiptProdRow.svelte"
 import ReceiptViewRow from "./ReceiptViewRow.svelte"
+import DashboardReceipt from "./DashboardReceipt.svelte"
+import DashboardProd from "./DashboardProd.svelte"
 
-
-export {Input, Sidebar, PageTitle, PageHeader, Modal, ProductRow, ReceiptRow, ReceiptProdRow, ReceiptViewRow}
+export {Input, Sidebar, PageTitle, PageHeader, Modal, ProductRow, ReceiptRow, ReceiptProdRow, ReceiptViewRow, DashboardReceipt, DashboardProd}

@@ -56,7 +56,7 @@
                       href="{navItem.href}"
                       class="flex shrink-0 justify-center items-center space-x-4 px-4 py-4 mb-3 text-slate-400 text-xl
                       hover:text-blue-600 dark:text-slate-600
-                      {$page.url.pathname == navItem.href ? 'text-slate-50 bg-gradient-to-r from-cyan-500 to-blue-500 hover:text-slate-50' : '' }"
+                      {$page.url.pathname == navItem.href ? 'text-slate-50 bg-gradient-to-r from-cyan-500 to-blue-500 hover:text-slate-50 dark:text-slate-50' : '' }"
                       >
                     <i class="{navItem.i}"></i>
                     </a>
@@ -77,7 +77,7 @@
                         hover:text-blue-600 dark:text-slate-600
                         "
                         >
-                      <i class="fa-solid fa-circle-user"></i>
+                      <i class="fa-solid fa-circle-user dark:text-slate-50"></i>
                       </a>
               </div>
                 <form action="/logout" method="POST" class="group flex items-center space-x-4 rounded-md px-4 pb-12 text-gray-600 ">
@@ -108,7 +108,7 @@
                 {#each navigation as navItem }
                     <li class = "inline-flex items-center text-sm font-medium text-slate-500 dark:slate-100 dark:hover:text-slate-300">
                         <a href={navItem.href} id="print" class="px-3 hover:text-blue-600
-                        {$page.url.pathname === navItem.href ? 'underline text-blue-600' : '' }"><i class="fa-solid fa-user-pen pr-2"/>{navItem.title}</a>
+                        {$page.url.pathname === navItem.href ? 'underline text-blue-600 dark:text-blue-500' : '' }"><i class="fa-solid fa-user-pen pr-2"/>{navItem.title}</a>
                     </li>
                 {/each}
             </ol>
