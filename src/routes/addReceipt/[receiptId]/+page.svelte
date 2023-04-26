@@ -12,7 +12,7 @@
     
     <div class = "w-full bg-white dark:bg-[#0F172A] pt-5 pb-1">
         <div class = "logo mt-8 ml-12 dark:text-slate-200   transform ease-in-out duration-500 h-full flex-col px-10">
-            <div class=" text-xl text-gray-700 mb-2 font-semibold"><i class="fa-regular fa-square-plus "></i> Add Prodoucts to the Receipt</div>
+            <div class=" text-xl text-gray-700 mb-2 font-semibold"><i class="fa-regular fa-square-plus "></i> Add Products to the Receipt</div>
             <div><p class="text-s text-gray-500 dark:text-gray-600 italic">Add some products in your inventory here.</p></div>
         </div>
         <div class = "grow h-full flex items-center justify-center"></div>
