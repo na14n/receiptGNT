@@ -55,21 +55,21 @@ export const registerSchema = z.object({
 export const businessProfileSchema = z.object({
     b_name: z
         .string({required_error: 'Name is required'})
-        .regex(/^[a-zA-Z\s]*$/, {message: 'Name can only contain letters and spaces'})
+        .regex(/^[a-zA-Z\s.\-,'@_]*$/, {message: 'Name can only contain letters and spaces'})
         .min(2, {message: 'Name must be at least 2 characters.'})
         .max(16, {message: 'Name must be less than 16 characters.'})
         .trim(),
     b_address: z
         .string({required_error: 'Address is required'})
-        .regex(/^[a-zA-Z0-9\s.\-,]+$/, {message: 'Address can only contain alphanumeric characters, spaces, dashes, and commas'})
+        .regex(/^[a-zA-Z0-9\s.\-,@]+$/, {message: 'Address can only contain alphanumeric characters, spaces, dashes, and commas'})
         .min(2, {message: 'Address must be at least 2 characters.'})
         .max(64, {message: 'Address must be less than 64 characters.'})
         .trim(),
     b_contact: z
         .string({required_error: 'Contact Information is required'})
-        .regex(/^[a-zA-Z0-9\s.\-@]*$/, {message: 'Contact Information can only contain alphanumeric characters, spaces, dashes, or asperand(@) for emails'})
+        .regex(/^[a-zA-Z\s.\-,'@_]*$/, {message: 'Contact Information can only contain alphanumeric characters, spaces, dashes, or asperand(@) for emails'})
         .min(2, {message: 'Contact Information must be at least 2 characters.'})
-        .max(16, {message: 'Contact Information must be less than 16 characters.'})
+        .max(32, {message: 'Contact Information must be less than 16 characters.'})
         .trim(),
     b_img: z 
         .instanceof(Blob)
