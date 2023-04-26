@@ -31,12 +31,21 @@ export const actions = {
 
 
     try {
-        await locals.pb.collection('users').create({username, ...formData })
+            console.log(formData);
+            // const existingUser =  await locals.pb.collection('users').findOne(formData)
+        if (existingUser){
+            error = 'Email already registered.'
+        } else {
+            // await locals.pb.collection('users').create({username, ...formData })  
+        }
+        
+        
     } catch (err) {
-        console.log('Error: ', err);
+        console.log('Error: ', err,);
+        console.log('Error: ', err.message.response);
         throw error(err.status, err.message);
     }
-        await locals.pb.collection('users').authWithPassword(formData.email, formData.password);
-        throw redirect(303, '/signup/createBusinessProfile')
+        // await locals.pb.collection('users').authWithPassword(formData.email, formData.password);
+        // throw redirect(303, '/signup/createBusinessProfile')
     }
 }
