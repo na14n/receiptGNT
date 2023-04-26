@@ -43,13 +43,13 @@
                 <form action="?/login" method="POST" use:enhance={submitLogin}> 
 
                     <div class="mb-7">
-                        <Input class="text-blue-600" type="text" name="email" id="email" label="Email" placeholder="Your Email" i="fa-solid fa-envelope pr-3" is="color:#2563eb" errors={form?.errors?.email} disabled={loading}/>
-                        <Input class="text-blue-600" type="password" name="password" id="password" label="Password" placeholder="Your Password" i="fa-solid fa-key pr-3" is="color:#2563eb" errors={form?.errors?.password} disabled={loading}/>
+                        <Input class="text-blue-600" type="text" name="email" id="email" label="Email" placeholder="Your Email" i="fa-solid fa-envelope pr-3" is="color:#2563eb" errors={form?.errors?.email} disable={loading}/>
+                        <Input class="text-blue-600" type="password" name="password" id="password" label="Password" placeholder="Your Password" i="fa-solid fa-key pr-3" is="color:#2563eb" errors={form?.errors?.password} disable={loading}/>
                     </div>
 
                     
                     <div class="mb-6">
-                        <button class="w-full px-3 py-2 text-white bg-blue-600 rounded-md focus:bg-blue-400 focus:outline-none" disabled={loading}>Sign in</button>
+                        <button class="w-full px-3 py-2 text-white bg-blue-600 rounded-md focus:bg-blue-400 focus:outline-none disabled:bg-blue-300" disabled={loading}>Sign in</button>
                     </div>
 
                     <p class="text-md text-center text-gray-600">Don't have an account yet? <a href="/signup" class="text-blue-600 underline hover:text-blue-400 dark:focus:border-indigo-800">Sign up</a>.</p>

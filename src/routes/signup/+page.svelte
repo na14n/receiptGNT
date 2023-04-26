@@ -38,13 +38,13 @@
             <div class="m-7">
                 <form action="?/register" method="POST" use:enhance={submitRegister}>
                     <div class="mb-7">
-                        <Input class="text-blue-600" type="text" name="name" id="name" label="Name" placeholder="Your Name" i="fa-solid fa-user pr-3" is="color:#2563eb" errors={form?.errors?.name}/>
-                        <Input class="text-blue-600" type="text" name="email" id="email" label="Email" placeholder="Your Email" i="fa-solid fa-envelope pr-3" is="color:#2563eb" errors={form?.errors?.email}/>
-                        <Input class="text-blue-600" type="password" name="password" id="password" label="Password" placeholder="Your Password" i="fa-solid fa-key pr-3" is="color:#2563eb" errors={form?.errors?.password}/>
-                        <Input class="text-blue-600" type="password" name="passwordConfirm" id="passwordConfirm" label="Confirm Password" placeholder="Please Confirm your Password" i="fa-solid fa-key pr-3" is="color:#2563eb" errors={form?.errors?.passwordConfirm}/>
+                        <Input class="text-blue-600" type="text" name="name" id="name" label="Name" placeholder="Your Name" i="fa-solid fa-user pr-3" is="color:#2563eb" errors={form?.errors?.name} disable={loading}/>
+                        <Input class="text-blue-600" type="text" name="email" id="email" label="Email" placeholder="Your Email" i="fa-solid fa-envelope pr-3" is="color:#2563eb" errors={form?.errors?.email} disable={loading}/>
+                        <Input class="text-blue-600" type="password" name="password" id="password" label="Password" placeholder="Your Password" i="fa-solid fa-key pr-3" is="color:#2563eb" errors={form?.errors?.password} disable={loading}/>
+                        <Input class="text-blue-600" type="password" name="passwordConfirm" id="passwordConfirm" label="Confirm Password" placeholder="Please Confirm your Password" i="fa-solid fa-key pr-3" is="color:#2563eb" errors={form?.errors?.passwordConfirm} disable={loading}/>
                     </div>
                     <div class="mb-6">
-                        <button class="w-full px-3 py-2 text-white bg-blue-600 rounded-md focus:bg-blue-400 focus:outline-none">Sign Up</button>
+                        <button class="w-full px-3 py-2 text-white bg-blue-600 rounded-md focus:bg-blue-400 focus:outline-none disabled:bg-blue-300" disabled={loading}>Sign Up</button>
                     </div>
                     <div class=" text-md flex justify-center items-center pb-7">
                         <p class="text-md text-center text-gray-600">Already have an account? <a href="/signin" class="text-blue-600 underline hover:text-blue-400 dark:focus:border-indigo-800">Sign in</a>.</p>
