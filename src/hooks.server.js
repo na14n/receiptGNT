@@ -4,8 +4,8 @@ import { serializeNonPOJOs } from '$lib/utils'
 export const handle = async({event, resolve}) => {
     // Local Hosted Pocketbase DB
     // To Access Local DB: Login using =>  bytesadmin@admin.com || bytesadmin 
-    // event.locals.pb = new Pocketbase('http://127.0.0.1:8090')
-    event.locals.pb = new Pocketbase('https://receipt-gnt.pockethost.io')
+    event.locals.pb = new Pocketbase('http://127.0.0.1:8090')
+    // event.locals.pb = new Pocketbase('https://receipt-gnt.pockethost.io')
     event.locals.pb.authStore.loadFromCookie(event.request.headers.get('cookie') || '')
 
     if (event.locals.pb.authStore.isValid) {
