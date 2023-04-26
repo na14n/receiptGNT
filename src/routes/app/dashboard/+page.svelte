@@ -64,7 +64,7 @@
           <p class="mt-4 mb-3 text-4xl font-bold text-left text-gray-700 dark:text-gray-100">
               {top.prod_name}
           </p>
-          <p class="text-m text-left opacity-75 text-green-300 dark:text-green-200">
+          <p class="text-m text-left opacity-75 text-green-500 dark:text-green-300">
             sold <span class="font-bold">{top.total_orders >= 0 ? `${top.total_orders}` : '0'} times</span>
         </p>
         </div>
@@ -84,7 +84,7 @@
               <p class="mt-4 mb-3 text-4xl font-bold text-left text-gray-700 dark:text-gray-100">
                 {least.prod_name}
             </p>
-            <p class="text-m text-left opacity-75 text-red-300 dark:text-red-200">
+            <p class="text-m text-left opacity-75 text-red-500 dark:text-red-300">
               sold <span class="font-bold">{least.total_orders >= 0 ? `${least.total_orders}` : '0'} times</span>
           </p>
           </div>
@@ -136,12 +136,12 @@
                   <tbody>
                     
 
-                    {#if today.length === 0}
+                    {#if data.products.list.length === 0}
                       <tr>
                         <td colspan="100"><p class="text-center text-m py-10 text-slate-600">You have no products.</p></td>
                       </tr>
                     {:else}
-                        {#each data.products.list as product }
+                        {#each data.products.list.slice(0,10) as product }
                           <DashboardProd {product}/>
                         {/each}
                     {/if}
@@ -197,7 +197,7 @@
                   {#if recent.length === 0}
                   <p class="text-center text-m py-3 text-slate-600">You have no recent receipts. </p>
                   {/if}
-                  {#each recent as receipt }
+                  {#each recent.slice(0,5) as receipt }
                     <DashboardReceipt {receipt}/>
                   {/each}
                 </ul> 
@@ -217,7 +217,7 @@
                     PREVIOUS RECEIPTS
                   </div>
                   <ul class="my-1">
-                    {#each recent.slice(0,5) as receipt }
+                    {#each recent.slice(0,4) as receipt }
                       <DashboardReceipt {receipt}/>
                     {/each}
                   </ul> 

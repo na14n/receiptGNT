@@ -1,5 +1,5 @@
 import { error, fail, redirect } from "@sveltejs/kit"
-import { generateUsername, validateData} from "$lib/utils"
+import { generateUsername, validateData, serializeNonPOJOs} from "$lib/utils"
 import { registerSchema } from "$lib/schemas"
 
 
@@ -7,16 +7,20 @@ export const load = async ({locals}) => {
     if (locals.pb.authStore.isValid) {
         throw redirect(303, '/app/dashboard')
     }
+
+    
 }
 
 
 export const actions = {
     register: async({ request, locals}) => {
-        // const body = Object.fromEntries(await request.formData())
-        // console.log(body.username+randomBytes(5).toString('hex'));
-        // body.append('business_id', body.username+randomBytes(5).toString('hex'))
 
-    const {formData, errors} = await validateData(await request.formData(), registerSchema)
+        const body = await request.formData();
+
+        const email = body.get('email');
+        console.log(email);
+
+    const {formData, errors} = await validateData(body, registerSchema)
 
     let username = generateUsername(formData.name.split(' ').join('').toLowerCase())
     
@@ -29,23 +33,28 @@ export const actions = {
 
     }
 
+    const existingUser =  serializeNonPOJOs(await locals.pb.collection('emails').getFirstListItem(undefined, {
+        filter: `email = "${email}"`
+    }))
+
 
     try {
-            console.log(formData);
-            // const existingUser =  await locals.pb.collection('users').findOne(formData)
+
         if (existingUser){
-            error = 'Email already registered.'
+            const error = new Error('Entred email already in use.')
+            error.status = 400
+            throw error;
+            // throw new error(400, 'Entred email already in use.');
         } else {
-            // await locals.pb.collection('users').create({username, ...formData })  
+            await locals.pb.collection('users').create({username, ...formData })  
         }
         
         
     } catch (err) {
         console.log('Error: ', err,);
-        console.log('Error: ', err.message.response);
         throw error(err.status, err.message);
     }
-        // await locals.pb.collection('users').authWithPassword(formData.email, formData.password);
-        // throw redirect(303, '/signup/createBusinessProfile')
+        await locals.pb.collection('users').authWithPassword(formData.email, formData.password);
+        throw redirect(303, '/signup/createBusinessProfile')
     }
 }

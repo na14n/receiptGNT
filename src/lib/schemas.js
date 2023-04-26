@@ -109,3 +109,27 @@ export const addProdSchema = z.object({
         .max(6, {message: 'The Price must be less than a million pesos.'})
         .trim()
 })
+
+export const emailSchema = z.object({
+    email: z
+        .string({required_error: 'Email is required'})
+        .email( {message: 'Email must be a valid email.'}),
+})
+
+export const passwordSchema = z.object({
+    password: z
+        .string({required_error: 'Password is required'})
+        .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, {
+            message: 'Password must have a minimum of eight characters, at least one letter and one number.'
+        }),
+    passwordConfirm: z
+        .string({required_error: 'Confirm Password is required'})
+        .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, {
+            message: 'Confirm Password must have a minimum of eight characters, at least one letter and one number.'
+        }),
+    oldPassword: z
+        .string({required_error: 'Confirm Password is required'})
+        .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, {
+            message: 'Confirm Password must have a minimum of eight characters, at least one letter and one number.'
+        })
+})

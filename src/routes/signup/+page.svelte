@@ -1,7 +1,31 @@
 <script>
+    import {enhance} from '$app/forms' 
+    import toast from "svelte-french-toast";
     import {Input} from "$lib/components"
 
     export let form
+
+    let loading = false
+    const submitRegister = () => {
+        loading =  true
+        return async ({ result, update}) => {
+            switch (result.type) {
+                case 'success':
+                    await update()
+                    break;
+                case 'invalid':
+                    toast.error('Invalid credentials')
+                    await update()
+                    break;
+                case 'error':
+                    toast.error(result.error.message) 
+                    break;
+                default:
+                    await update()
+            }
+            loading = false; 
+        };
+    }
 </script>
 
 <div class="flex items-center min-h-screen bg-white dark:bg-gray-900">
@@ -12,7 +36,7 @@
                 <p class="text-gray-500 dark:text-gray-600 italic">Register to have an account</p>
             </div>
             <div class="m-7">
-                <form action="?/register" method="POST">
+                <form action="?/register" method="POST" use:enhance={submitRegister}>
                     <div class="mb-7">
                         <Input class="text-blue-600" type="text" name="name" id="name" label="Name" placeholder="Your Name" i="fa-solid fa-user pr-3" is="color:#2563eb" errors={form?.errors?.name}/>
                         <Input class="text-blue-600" type="text" name="email" id="email" label="Email" placeholder="Your Email" i="fa-solid fa-envelope pr-3" is="color:#2563eb" errors={form?.errors?.email}/>

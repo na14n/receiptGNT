@@ -1,5 +1,6 @@
 <script src="$lib/html2canvas.js">
     import {ReceiptViewRow} from "$lib/components" 
+    import {getImageUrl} from "$lib/utils"
 
    export let data
 
@@ -37,7 +38,8 @@
         <div class="flex flex-col px-5 py-3">
             <div>
                 <span>
-                    <img src="/logo.png" class="h-10 mb-1" alt="logo" />
+                    <!-- src="/logo.png" -->
+                    <img src={data.user?.b_img ? getImageUrl(data.user.collectionId, data.user.id, data.user.b_img) : `https://ui-avatars.com/api/?name=${data.user.b_name}`  } class="max-h-20 mb-1" alt="logo" />
                 </span>
             </div>
             <div class="text-center text-2xl uppercase font-bold text-gray-700 mb-2">
