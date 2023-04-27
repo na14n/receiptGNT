@@ -14,7 +14,7 @@
     <!-- Content -->
     <!-- <div class = "content ml-12 transform ease-in-out duration-500 pt-5 px-2 md:px-5 pb-4"> -->
         
-        <PageTitle title="Inventory" link="inventory" i="fa-solid fa-folder-open pr-2"/>
+        <PageTitle title="Products List" link="inventory" i="fa-solid fa-folder-open pr-2"/>
 
         <!-- Inventory Table -->
         <div class="pt-10 pr-20 pl-28 rounded-md dark:bg-dark-700">
