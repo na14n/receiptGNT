@@ -53,6 +53,8 @@
                     </div>
 
                     <p class="text-md text-center text-gray-600">Don't have an account yet? <a href="/signup" class="text-blue-600 underline hover:text-blue-400 dark:focus:border-indigo-800" aria-disabled={loading}>Sign up</a>.</p>
+
+                    <p class="mt-4 text-md text-center text-gray-600">Or perhaps you forgot your password?<a href="/signup/forgot" class="text-blue-600 underline hover:text-blue-400 dark:focus:border-indigo-800" aria-disabled={loading}>Reset it here.</a></p>
                 </form>
             </div>
         </div>
