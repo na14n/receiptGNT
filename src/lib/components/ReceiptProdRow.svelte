@@ -49,7 +49,7 @@
             </div>
             <div slot="actions" class="flex w-full">
                 <form action="?/updateProduct" method="POST" class="w-full">
-                    <Input class="text-blue-600" type="number" name="qty" id="qty" label="qty" placeholder="Product Quantity" i="fa-solid fa-money-bill pr-3" is="color:#2563eb" value=""/>
+                    <Input class="text-blue-600" type="number" name="qty" id="qty" label="qty" placeholder="Product Quantity" i="fa-solid fa-money-bill pr-3" is="color:#2563eb" value={product.qty}/>
                     <input type="hidden" name="id" value="{product.id}" />
                     <input type="hidden" name="product" value="{product.product}" />
                     <div class="flex justify-end gap-x-4 pr-5">

@@ -103,7 +103,7 @@ export const actions = {
         formData.append('subtotal', subtotal)
          try {
             console.log(formData);
-            await locals.pb.collection('receipt_products').update(id, {qty: qty})
+            await locals.pb.collection('receipt_products').update(id, {"qty": qty, "subtotal": subtotal})
          } catch (err) {
             console.log('Error: ', err)
             throw error(err.status, err.message)

@@ -100,7 +100,7 @@ export const addProdSchema = z.object({
         .string({required_error: 'Name is required'})
         .regex(/^[a-zA-Z\s]*$/, {message: 'Name can only contain letters and spaces'})
         .min(2, {message: 'Name must be at least 2 characters.'})
-        .max(16, {message: 'Name must be less than 16 characters.'})
+        .max(32, {message: 'Name must be less than 32 characters.'})
         .trim(),
     prod_price: z
         .string({required_error: 'Price is required'})

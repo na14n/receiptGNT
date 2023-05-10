@@ -39,7 +39,7 @@
             <div>
                 <span>
                     <!-- src="/logo.png" -->
-                    <img src={data.user?.b_img ? getImageUrl(data.user.collectionId, data.user.id, data.user.b_img) : `https://ui-avatars.com/api/?name=${data.user.b_name}`  } class="max-h-20 mb-1" alt="logo" />
+                    <img src={data.user?.b_img ? getImageUrl(data.user.collectionId, data.user.id, data.user.b_img) : '/logo.png'  } class="{data.user?.b_img ? 'max-h-20' : 'max-h-12'} mb-1" alt="logo" />
                 </span>
             </div>
             <div class="text-center text-2xl uppercase font-bold text-gray-700 mb-2">

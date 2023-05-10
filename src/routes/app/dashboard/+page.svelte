@@ -207,11 +207,15 @@
                     PREVIOUS RECEIPTS
                   </div>
                   <ul class="my-1">
-                    
                     {#each recent.slice(0,3) as receipt }
                       <DashboardReceipt {receipt}/>
                     {/each}
                   </ul> 
+                  {:else if recent.length === 0}
+                  <div class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    PREVIOUS RECEIPTS
+                  </div>
+                  <p class="text-center text-m py-3 text-slate-600">You have no other recent receipts.</p>
                   {:else}
                   <div class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     PREVIOUS RECEIPTS

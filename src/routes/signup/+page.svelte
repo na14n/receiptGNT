@@ -47,7 +47,7 @@
                         <button class="w-full px-3 py-2 text-white bg-blue-600 rounded-md focus:bg-blue-400 focus:outline-none disabled:bg-blue-300" disabled={loading}>Sign Up</button>
                     </div>
                     <div class=" text-md flex justify-center items-center pb-7">
-                        <p class="text-md text-center text-gray-600">Already have an account? <a href="/signin" class="text-blue-600 underline hover:text-blue-400 dark:focus:border-indigo-800">Sign in</a>.</p>
+                        <p class="text-md text-center text-gray-600">Already have an account? <a href="/signin" class="text-blue-600 underline hover:text-blue-400 dark:focus:border-indigo-800" aria-disabled={loading}>Sign in</a>.</p>
                     </div>
                 </form>
             </div>
