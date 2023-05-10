@@ -1,5 +1,4 @@
 import { redirect } from "@sveltejs/kit"
-import { userProducts } from "../../stores/store.js"
 
 export const load = async ({locals}) => {
 
