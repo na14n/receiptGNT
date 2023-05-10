@@ -1,8 +1,34 @@
 <script>
     import {ReceiptProdRow, Modal, Input} from "$lib/components"
-    
+    import {enhance} from '$app/forms' 
+    import toast from "svelte-french-toast";
 
     export let data
+
+    
+    let loading = false
+    const submitRegister = () => {
+        loading =  true
+        return async ({ result, update}) => {
+            switch (result.type) {
+                case 'success':
+                    await update()
+                    break;
+                case 'invalid':
+                    toast.error('Invalid credentials')
+                    await update()
+                    break;
+                case 'error':
+                    toast.error(result.error.message) 
+                    break;
+                default:
+                    await update()
+            }
+            loading = false; 
+        };
+    }
+
+
     let modalAdd
 </script>
 
@@ -99,12 +125,12 @@
                 </div>
                 <div slot="actions" class="flex w-full">
                     
-                    <form action="?/addProduct" method="POST" class="w-full">
+                    <form action="?/addProduct" method="POST" class="w-full" use:enhance={submitRegister}>
                         <div class="block mb-2 text-sm text-gray-700 dark:text-gray-400">
                             <label for="" class="label font-semibold pb-1">
                                 <span><i class="fa-solid fa-boxes-stacked pr-3" style="color:#2563eb"></i>Choose a Product</span>
                             </label>
-                            <select name="product" class="w-full px-3 py-2 placeholder-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 bg-slate-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500">
+                            <select name="product" class="w-full px-3 py-2 placeholder-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 bg-slate-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" disabled={loading}>
                                 {#each data.inventory as inventory}
                                 <option value={inventory.id}>
                                     {inventory.prod_name}
@@ -112,11 +138,12 @@
                                 {/each}
                             </select>
                         </div>
-                        <Input class="text-blue-600" type="number" name="qty" id="qty" label="qty" placeholder="Product Quantity" i="fa-solid fa-money-bill pr-3" is="color:#2563eb" value=""/>
+                        <Input class="text-blue-600" type="number" name="qty" id="qty" label="qty" placeholder="Product Quantity" i="fa-solid fa-hashtag pr-3" is="color:#2563eb" value="" disable={loading}/>
                         <input type="hidden" name="id" value="" />
                         <div class="flex justify-end gap-x-4 pt-7 pr-5">
                             <label for="modalAdd" class="btn btn-ghost text-gray-500">Cancel</label>
-                            <button class="btn btn-success hover:bg-emerald-300">Add Product</button>
+                            <button class="btn btn-success hover:bg-emerald-300" disabled=
+                            {loading}>Add Product</button>
                         </div>
                     </form>
                 </div>
@@ -128,7 +155,7 @@
                 <div class = "flex-col px-10">
                     <form action="?/saveProd" method="POST">
                         <input type="hidden" name="total" value={data.total}>
-                        <button class="btn bg-blue-600 hover:bg-blue-500 text-sky-100 border-0">Save Products</button>
+                        <button class="btn bg-blue-600 hover:bg-blue-500 text-sky-100 border-0" disabled={loading}>Save Products</button>
                     </form>
                 </div>
             </div>

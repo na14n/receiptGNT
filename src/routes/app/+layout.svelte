@@ -38,6 +38,7 @@
                 <div class="min-w-max">
                   {#each navigation as navItem}
                     <a
+                      data-sveltekit-prefetch
                       href="{navItem.href}"
                       class="flex shrink-0 justify-center items-center space-x-4 px-4 py-4 mb-3 text-slate-400 text-xl
                       hover:text-blue-600 dark:text-slate-600
@@ -57,6 +58,7 @@
             <div class="w-max mb-3">
               <div class="w-max mb-3">
                 <a
+                        data-sveltekit-prefetch
                         href="/profile"
                         class="flex shrink-0 justify-center items-center space-x-4 px-4 py-4 mb-3 text-slate-400 text-xl
                         hover:text-blue-600 dark:text-slate-600
