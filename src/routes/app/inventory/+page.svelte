@@ -8,7 +8,7 @@
 <body class = "body bg-white dark:bg-[#0F172A] min-h-screen ">
     
     <!-- Header -->
-    <PageHeader header="Inventory Management" name="Add Product" link="/addProd"/>
+    <PageHeader header="Products List" name="Add Product" link="/addProd"/>
     
 
     <!-- Content -->
