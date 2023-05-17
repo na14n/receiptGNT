@@ -1,4 +1,4 @@
-import { error, redirect } from "@sveltejs/kit"
+import { error, redirect, fail } from "@sveltejs/kit"
 import { generateReceiptId } from "$lib/utils"
 import { validateData} from "$lib/utils"
 import { createReceiptSchema } from "$lib/schemas"
