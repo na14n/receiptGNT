@@ -1,7 +1,24 @@
 <script>
     import { PageTitle, PageHeader, ProductRow} from "$lib/components"
-
+    import { createSearchStore, searchHandler } from '$lib/stores/search'
+	import { onDestroy } from "svelte";
+    
     export let data
+
+    const searchReceipt = data.products.map((product) => ({
+        ...product,
+        searchTerms: `${product.prod_name} ${product.prod_price}`
+    }));
+
+    const searchStore = createSearchStore(searchReceipt);
+
+    const unsubscribe = searchStore.subscribe((model) => searchHandler(model));
+
+    onDestroy(() => {
+        unsubscribe();
+    });
+
+
 </script>
 
 
@@ -18,6 +35,10 @@
 
         <!-- Inventory Table -->
         <div class="pt-10 pr-20 pl-28 rounded-md dark:bg-dark-700">
+            <div class=" flex flex-col justify-center items-start gap-3 pb-6">  
+                <h4 class="font-bold">Search/Filter</h4>
+                <input type="search" class="input w-1/4" placeholder="Search..." bind:value={$searchStore.search} />
+            </div>
             <div class=" flex items-center justify-between pb-6">
             </div>
                 <div>
@@ -63,7 +84,7 @@
                                             
                                         </tr>
                                             {:else}
-                                                {#each data.products as product }
+                                                {#each $searchStore.filtered as product }
                                                 <ProductRow {product}/>
                                         {/each}
                                     {/if}

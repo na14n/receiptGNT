@@ -1,7 +1,23 @@
 <script>
     import { Sidebar, PageTitle, PageHeader, ReceiptRow} from "$lib/components"
+    import { createSearchStore, searchHandler } from '$lib/stores/search'
+	import { onDestroy } from "svelte";
 
     export let data
+
+    const searchReceipt = data.receipts.map((receipt) => ({
+        ...receipt,
+        searchTerms: `${receipt.c_name} ${receipt.c_contact} ${receipt.c_address}`
+    }));
+
+    const searchStore = createSearchStore(searchReceipt);
+
+    const unsubscribe = searchStore.subscribe((model) => searchHandler(model));
+
+    onDestroy(() => {
+        unsubscribe();
+    });
+
 </script>
 
 <body class = "body bg-white dark:bg-[#0F172A] min-h-screen ">
@@ -11,8 +27,14 @@
 
     <PageTitle title="Receipt" link="receipt" i="fa-solid fa-receipt pr-2"/>
 
+    
+
     <div class="pt-10 pr-20 pl-28 rounded-md dark:bg-dark-700">
-        <div class=" flex items-center justify-between pb-6">  
+        <div class=" flex flex-col justify-center items-start gap-3 pb-6">  
+            <h4 class="font-bold">Search/Filter</h4>
+            <input type="search" class="input w-1/4" placeholder="Search..." bind:value={$searchStore.search} />
+        </div>
+        <div class="grid grid-cols-4 gap-4">
         </div>
         <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto shadow-lg shadow-slate-800/500 rounded-lg">
             <div class="inline-block min-w-full rounded-lg overflow-hidden">
@@ -66,7 +88,7 @@
                             </td>
                         </tr>
                             {:else}
-                                {#each data.receipts as receipt }
+                                {#each $searchStore.filtered as receipt }
                                 <ReceiptRow {receipt}/>
                         {/each}
                     {/if}

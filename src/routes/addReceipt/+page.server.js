@@ -1,5 +1,7 @@
 import { error, redirect } from "@sveltejs/kit"
 import { generateReceiptId } from "$lib/utils"
+import { validateData} from "$lib/utils"
+import { createReceiptSchema } from "$lib/schemas"
 
 export const load = async ({locals}) => {
     if ((!locals.pb.authStore.isValid && locals.user.have_profile === false))  {
@@ -10,15 +12,22 @@ export const load = async ({locals}) => {
 
 export const actions = {
     createReceipt: async ({request, locals}) => {
-        const formData = Object.fromEntries(await request.formData())
+        const {formData, errors} = await validateData(await request.formData(), createReceiptSchema)
+        
+        if (errors) {
+                return fail(400, {
+                    data: formData,
+                    errors: errors.fieldErrors
+                })
+    
+        }
+
+
 
         let user = locals.user.id
         let r_id = generateReceiptId(formData.c_name.split(' ').join('').toLowerCase())
         
         try {
-            console.log(user);
-            console.log(r_id);
-            console.log(formData);
             await locals.pb.collection('receipts').create({"user": user, "r_id": r_id, ...formData})
         } catch (err) {
             console.log('Error: ', err);

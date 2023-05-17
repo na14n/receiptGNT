@@ -1,14 +1,56 @@
 <script>
     import {Modal, Input} from "$lib/components"
-
+    import {enhance} from '$app/forms' 
+	import toast from "svelte-french-toast";
     let modalUpdateOpen
     let modalDeleteOpen
     export let product 
 
-    // let date = product.created.slice(0, product.created.indexOf(' '))
-    // let time = product.created
-    // console.log(date)
-    // console.log(time)
+    let loading = false
+    const submitUpdate = () => {
+        loading =  true
+        return async ({ result, update}) => {
+            switch (result.type) {
+                case 'success':
+                    await update()
+                    toast.success(`Product updated successfully`)
+                    modalUpdateOpen = false
+                    break;
+                case 'invalid':
+                    toast.error('Invalid input')
+                    await update()
+                    break;
+                case 'error':
+                    toast.error(result.error.message) 
+                    break;
+                default:
+                    await update()
+            }
+            loading = false; 
+        };
+    }
+    const submitDelete = () => {
+        loading =  true
+        return async ({ result, update}) => {
+            switch (result.type) {
+                case 'success':
+                    await update()
+                    toast.success(`Product deleted successfully`)
+                    modalUpdateOpen = false
+                    break;
+                case 'invalid':
+                    toast.error('Invalid input')
+                    await update()
+                    break;
+                case 'error':
+                    toast.error(result.error.message) 
+                    break;
+                default:
+                    await update()
+            }
+            loading = false; 
+        };
+    }
 
     let createdDate = new Date(product.created)
     const cyear = createdDate.getFullYear();
@@ -68,9 +110,9 @@
             </div>
             <div slot="actions" class="flex w-full">
                 
-                <form action="?/updateProduct" method="POST" class="w-full">
+                <form action="?/updateProduct" method="POST" class="w-full" use:enhance={submitUpdate}>
                     <Input class="text-blue-600" type="text" name="prod_name" id="prod_name" label="Product Name" placeholder="Your Product's Name" i="fa-solid fa-boxes-stacked pr-3" is="color:#2563eb" value={product.prod_name}/>
-                    <Input class="text-blue-600" type="text" name="prod_price" id="prod_price" label="Product Price" placeholder="The Product's Price" i="fa-solid fa-money-bill pr-3" is="color:#2563eb" value={product.prod_price}/>
+                    <Input class="text-blue-600" type="number" name="prod_price" id="prod_price" label="Product Price" placeholder="The Product's Price" i="fa-solid fa-money-bill pr-3" is="color:#2563eb" value={product.prod_price}/>
                     <input type="hidden" name="id" value="{product.id}" />
                     <div class="flex justify-end gap-x-4 pr-5">
                         <label for="update{product.prod_name}" class="btn btn-ghost text-gray-500">Cancel</label>
@@ -93,7 +135,7 @@
                 </p>
             </div>
             <div slot="actions" class="flex w-full">
-                <form action="?/deleteProduct" method="POST" class="w-full">
+                <form action="?/deleteProduct" method="POST" class="w-full" use:enhance={submitDelete}>
                     <input type="hidden" name="id" value={product.id} />
                     <div class="flex justify-end gap-x-4 pr-5">
                         <label for="delete{product.id}" class="btn btn-ghost text-gray-500">Cancel</label>

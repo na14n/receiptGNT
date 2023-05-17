@@ -6,7 +6,7 @@
     export let form
 
     let loading = false
-    const submitRegister = () => {
+    const submitForm = () => {
         loading =  true
         return async ({ result, update}) => {
             switch (result.type) {
@@ -36,10 +36,10 @@
                 <p class="text-gray-500 dark:text-gray-600 italic">Add some products in your inventory here.</p>
             </div>
             <div class="m-7">
-                <form action="?/addProd" method="POST">
+                <form action="?/addProd" method="POST" use:enhance={submitForm}>
                     <div class="mb-7">
                         <Input class="text-blue-600" type="text" name="prod_name" id="prod_name" label="Product Name" placeholder="Your Product's Name" i="fa-solid fa-boxes-stacked pr-3" is="color:#2563eb" errors={form?.errors?.prod_name} disable={loading}/>
-                        <Input class="text-blue-600" type="text" name="prod_price" id="prod_price" label="Product Price" placeholder="The Product's Price" i="fa-solid fa-money-bill pr-3" is="color:#2563eb" errors={form?.errors?.prod_price} disable={loading}/>
+                        <Input class="text-blue-600" type="number" name="prod_price" id="prod_price" label="Product Price" placeholder="The Product's Price" i="fa-solid fa-money-bill pr-3" is="color:#2563eb" errors={form?.errors?.prod_price} disable={loading}/>
                     </div>
                     <div class="mb-6">
                         <button class="w-full px-3 py-2 text-white bg-blue-600 rounded-md focus:bg-blue-400 focus:outline-none" disabled={loading}>Add Product</button>

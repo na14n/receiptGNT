@@ -1,9 +1,57 @@
 <script>
     import {Modal, Input} from "$lib/components"
+    import {enhance} from '$app/forms' 
+	import toast from "svelte-french-toast";
 
     let modalUpdateOpen
     let modalDeleteOpen
-    export let product 
+    export let product
+    
+    let loading = false
+    const submitUpdate = () => {
+        loading =  true
+        return async ({ result, update}) => {
+            switch (result.type) {
+                case 'success':
+                    await update()
+                    toast.success(`Product updated successfully`)
+                    modalUpdateOpen = false
+                    break;
+                case 'invalid':
+                    toast.error('Invalid input')
+                    await update()
+                    break;
+                case 'error':
+                    toast.error(result.error.message) 
+                    break;
+                default:
+                    await update()
+            }
+            loading = false; 
+        };
+    }
+    const submitDelete = () => {
+        loading =  true
+        return async ({ result, update}) => {
+            switch (result.type) {
+                case 'success':
+                    await update()
+                    toast.success(`Product deleted successfully`)
+                    modalUpdateOpen = false
+                    break;
+                case 'invalid':
+                    toast.error('Invalid input')
+                    await update()
+                    break;
+                case 'error':
+                    toast.error(result.error.message) 
+                    break;
+                default:
+                    await update()
+            }
+            loading = false; 
+        };
+    }
 </script>
 
 <tr>
@@ -48,8 +96,8 @@
                 </p>
             </div>
             <div slot="actions" class="flex w-full">
-                <form action="?/updateProduct" method="POST" class="w-full">
-                    <Input class="text-blue-600" type="number" name="qty" id="qty" label="qty" placeholder="Product Quantity" i="fa-solid fa-money-bill pr-3" is="color:#2563eb" value={product.qty}/>
+                <form action="?/updateProduct" method="POST" class="w-full" use:enhance={submitUpdate}>
+                    <Input class="text-blue-600" type="number" name="qty" id="qty" label="qty" placeholder="Product Quantity" i="fa-solid fa-money-bill pr-3" is="color:#2563eb" value={product.qty}  />
                     <input type="hidden" name="id" value="{product.id}" />
                     <input type="hidden" name="product" value="{product.product}" />
                     <div class="flex justify-end gap-x-4 pr-5">
@@ -62,7 +110,7 @@
     </td>
     <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
         <Modal label="{product.expand.product.id}" checked={modalDeleteOpen}>
-            <span slot="trigger" class="text-red-500 cursor-pointer">Delete<i class="fa-regular fa-trash-can pl-2"></i> </span>
+            <span slot="trigger" class="text-red-500 cursor-pointer" use:enhance={submitDelete}>Delete<i class="fa-regular fa-trash-can pl-2"></i> </span>
             <div slot="heading">
                 <h3 class="text-2xl mb-3">Delete {product.expand.product.prod_name}</h3>
                 <p class="text-base font-normal text-gray-500 italic">

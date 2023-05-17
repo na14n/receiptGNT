@@ -1,5 +1,7 @@
 import { error, redirect } from "@sveltejs/kit"
 import {serializeNonPOJOs} from "$lib/utils"
+import { validateData} from "$lib/utils"
+import { updateProdSchema } from "$lib/schemas"
 
 export const load = async ({locals}) => {
     if ((!locals.pb.authStore.isValid) && (locals.user.have_profile == false) ){
@@ -12,7 +14,6 @@ export const load = async ({locals}) => {
                 filter: 'user = "'+userId+'"'
             }))
             let date = products.map(x => x.created)
-            // var pop = date[1].slice(0, date[1].indexOf(' '))
 
             return products
         } catch (err) {
@@ -42,7 +43,16 @@ export const actions = {
     },
 
     updateProduct: async ({request, locals}) => {
-        const formData = Object.fromEntries(await request.formData())
+        const {formData, errors} = await validateData(await request.formData(), updateProdSchema)
+
+        if (errors) {
+            return fail(400, {
+                data: formData,
+                errors: errors.fieldErrors
+            })
+
+    }
+
          try {
             await locals.pb.collection('products').update(formData.id, formData)
          } catch (err) {
