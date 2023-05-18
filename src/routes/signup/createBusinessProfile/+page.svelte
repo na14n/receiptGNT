@@ -19,7 +19,7 @@
                         <Input class="text-blue-600" type="text" name="b_contact" id="b_contact" label="Business Contact" placeholder="Your Contact Information" i="fa-solid fa-address-card pr-3" is="color:#2563eb" errors={form?.errors?.b_contact}/>
                     </div>
                     <div class="mb-6">
-                        <button class="w-full px-3 py-2 text-white bg-blue-600 rounded-md focus:bg-blue-400 focus:outline-none">Create my Profile</button>
+                        <button class="w-full px-3 py-2 font-medium text-white bg-blue-600 rounded-md focus:bg-blue-400 focus:outline-none">Create my Profile</button>
                     </div>
                 </form>
             </div>

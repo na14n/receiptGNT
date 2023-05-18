@@ -11,11 +11,11 @@
         flex justify-center items-center">
         <i class="fa-solid fa-receipt"></i>
     </div>
-    <div class="flex-grow flex items-center border-b border-gray-100 dark:border-gray-400 text-sm text-gray-600 dark:text-gray-100 py-2">
+    <div class="flex-grow flex items-center border-b border-gray-100 dark:border-gray-400 text-sm text-gray-600 dark:text-gray-100 py-2 md:text-xs">
       <div class="flex-grow flex justify-between items-center">
     
         <div class="self-center flex gap-1">
-                A receipt for
+               A  receipt for
             <p class="font-medium text-gray-800 hover:text-gray-900 dark:text-gray-50" style="outline: none;">
                 {receipt.c_name}
             </p> 
@@ -23,9 +23,8 @@
             <p class="font-medium text-gray-800 dark:text-gray-50 " style="outline: none;">
                 {dateString}
             </p>
-                with a total of 
                 <p class="font-medium text-gray-800 dark:text-gray-50 " style="outline: none;">
-                 Php {receipt.total}
+                  with a total of  ₱ {receipt.total}
               </p>
         </div>
         <div class="flex-shrink-0 ml-2 mr-1">

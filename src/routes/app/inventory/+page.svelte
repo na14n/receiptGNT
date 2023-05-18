@@ -1,5 +1,5 @@
 <script>
-    import { PageTitle, PageHeader, ProductRow} from "$lib/components"
+    import { PageTitle, PageHeader, ProductRow, Input} from "$lib/components"
     import { createSearchStore, searchHandler } from '$lib/stores/search'
 	import { onDestroy } from "svelte";
     
@@ -34,10 +34,10 @@
         <PageTitle title="Products List" link="inventory" i="fa-solid fa-folder-open pr-2"/>
 
         <!-- Inventory Table -->
-        <div class="pt-10 pr-20 pl-28 rounded-md dark:bg-dark-700">
-            <div class=" flex flex-col justify-center items-start gap-3 pb-6">  
-                <h4 class="font-bold">Search/Filter</h4>
-                <input type="search" class="input w-1/4" placeholder="Search..." bind:value={$searchStore.search} />
+        <div class="pt-5 pr-20 pl-28 rounded-md dark:bg-dark-700">
+            <div class=" flex flex-col justify-center items-start">  
+                <h4 class="font-bold text-slate-600">Search/Filter</h4>
+                <input type="search" class="py-2 w-1/4 text-slate-700 px-3 placeholder-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 bg-slate-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" placeholder="Search..." bind:value={$searchStore.search} />
             </div>
             <div class=" flex items-center justify-between pb-6">
             </div>

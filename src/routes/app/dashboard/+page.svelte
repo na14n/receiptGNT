@@ -15,19 +15,19 @@
 
     
     <!--HEADER-->
-    <PageHeader header="Hello User" hidden="true" />
+    <PageHeader header="Welcome {data.user.name}" hidden="true" />
     
     <PageTitle title="Dashboard" link="dashboard" i="fa-solid fa-house pr-2"/>
     <!-- CONTENT -->
 
-    <div class = "content ml-12 transform ease-in-out duration-500 px-2 md:px-5 pb-4">
+    <div class = "content ml-12 transform ease-in-out duration-500 px-2 md:px-5 pb-2">
 
         <!-- PAGE CONTENT TITLE -->
        
         
 
       <!--WEEKLY SALES-->
-      <div class="relative flex items-center p-3 mt-5 rounded-xl border border-gray-200 text-white">
+      <div class="relative flex items-center p-3 mt-2 rounded-xl border border-gray-200 text-white">
     
         <div class="p-4 w-screen bg-gray-50 shadow-lg rounded-2xl dark:bg-[#1E293B]">
           <div class="flex items-center">
@@ -108,7 +108,7 @@
 
 
         <!--CONTAINER HOLDER-->
-        <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4 mt-5 rounded-xl border border-gray-200 text-white">
+        <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4 mt-2 rounded-xl border border-gray-200 text-white">
         <!--div class="px-1 pt-6 auto:container">
         <--div class="grid gap-1 md:grid-cols-2 lg:grid-cols-3">
         <--div class="md:col-span-2 lg:col-span-1" >

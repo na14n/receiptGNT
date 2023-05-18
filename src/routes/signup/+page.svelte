@@ -44,7 +44,7 @@
                         <Input class="text-blue-600" type="password" name="passwordConfirm" id="passwordConfirm" label="Confirm Password" placeholder="Please Confirm your Password" i="fa-solid fa-key pr-3" is="color:#2563eb" errors={form?.errors?.passwordConfirm} disable={loading}/>
                     </div>
                     <div class="mb-6">
-                        <button class="w-full px-3 py-2 text-white bg-blue-600 rounded-md focus:bg-blue-400 focus:outline-none disabled:bg-blue-300" disabled={loading}>Sign Up</button>
+                        <button class="w-full px-3 py-2 text-white font-medium bg-blue-600 rounded-md focus:bg-blue-400 focus:outline-none disabled:bg-blue-300" disabled={loading}>Sign Up</button>
                     </div>
                     <div class=" text-md flex justify-center items-center pb-7">
                         <p class="text-md text-center text-gray-600">Already have an account? <a href="/signin" class="text-blue-600 underline hover:text-blue-400 dark:focus:border-indigo-800" aria-disabled={loading}>Sign in</a>.</p>
