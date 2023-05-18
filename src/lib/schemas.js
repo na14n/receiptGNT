@@ -95,10 +95,28 @@ export const businessProfileSchema = z.object({
         })
 })
 
+export const updateProdSchema = z.object({
+    id: z
+        .string()
+        .trim(),
+    prod_name: z
+        .string({required_error: 'Name is required'})
+        .regex(/^[a-zA-Z0-9\s.-]+$/, {message: 'Name can only contain letters, numbers, spaces, dashes, and periods.'})
+        .min(2, {message: 'Name must be at least 2 characters.'})
+        .max(32, {message: 'Name must be less than 32 characters.'})
+        .trim(),
+    prod_price: z
+        .string({required_error: 'Price is required'})
+        .regex(/^[0-9]+$/, {message: 'Price can only contain numbers.'})
+        .min(1, {message: 'Please enter a valid Price'})
+        .max(6, {message: 'The Price must be less than a million pesos.'})
+        .trim()
+})
+
 export const addProdSchema = z.object({
     prod_name: z
         .string({required_error: 'Name is required'})
-        .regex(/^[a-zA-Z\s]*$/, {message: 'Name can only contain letters and spaces'})
+        .regex(/^[a-zA-Z0-9\s.-]+$/, {message: 'Name can only contain letters, numbers, spaces, dashes, and periods.'})
         .min(2, {message: 'Name must be at least 2 characters.'})
         .max(32, {message: 'Name must be less than 32 characters.'})
         .trim(),
@@ -119,17 +137,64 @@ export const emailSchema = z.object({
 export const passwordSchema = z.object({
     password: z
         .string({required_error: 'Password is required'})
-        .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, {
+        .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d\W+]{8,}$/, {
             message: 'Password must have a minimum of eight characters, at least one letter and one number.'
         }),
     passwordConfirm: z
         .string({required_error: 'Confirm Password is required'})
-        .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, {
+        .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d\W+]{8,}$/, {
             message: 'Confirm Password must have a minimum of eight characters, at least one letter and one number.'
         }),
     oldPassword: z
         .string({required_error: 'Confirm Password is required'})
-        .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, {
+        .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d\W+]{8,}$/, {
             message: 'Confirm Password must have a minimum of eight characters, at least one letter and one number.'
         })
+})
+
+export const createReceiptSchema = z.object({
+    c_name:z
+        .string({required_error: 'Email is required'})
+        .regex(/^[a-zA-Z0-9\s.-]+$/, {message: 'Name can only contain letters, numbers, spaces, dashes, and periods.'})
+        .min(2, {message: 'Name must be at least 2 characters.'})
+        .max(32, {message: 'Name must be less than 32 characters.'})
+        .trim(),
+    c_address:z
+        .string({required_error: 'Email is required'})
+        .regex(/^[a-zA-Z0-9\s.,-]+$/, {message: 'Address can only contain letters, numbers, spaces, dashes, commas, and periods.'})
+        .min(2, {message: 'Address must be at least 2 characters.'})
+        .max(64, {message: 'Address must be less than 64 characters.'})
+        .trim(),
+    c_contact:z
+        .string({required_error: 'Email is required'})
+        .regex(/^[a-zA-Z0-9\s.-@]+$/, {message: 'Contact can only contain letters, numbers, spaces, - , @ , and periods.'})
+        .min(2, {message: 'Address must be at least 2 characters.'})
+        .max(64, {message: 'Address must be less than 64 characters.'})
+        .trim(),
+
+})
+
+export const updateReceiptSchema = z.object({
+    id:z
+        .string()
+        .trim(),
+    c_name:z
+        .string({required_error: 'Email is required'})
+        .regex(/^[a-zA-Z0-9\s.-]+$/, {message: 'Name can only contain letters, numbers, spaces, dashes, and periods.'})
+        .min(2, {message: 'Name must be at least 2 characters.'})
+        .max(32, {message: 'Name must be less than 32 characters.'})
+        .trim(),
+    c_address:z
+        .string({required_error: 'Email is required'})
+        .regex(/^[a-zA-Z0-9\s.,-]+$/, {message: 'Address can only contain letters, numbers, spaces, dashes, commas, and periods.'})
+        .min(2, {message: 'Address must be at least 2 characters.'})
+        .max(64, {message: 'Address must be less than 64 characters.'})
+        .trim(),
+    c_contact:z
+        .string({required_error: 'Email is required'})
+        .regex(/^[a-zA-Z0-9\s.-@]+$/, {message: 'Contact can only contain letters, numbers, spaces, - , @ , and periods.'})
+        .min(2, {message: 'Address must be at least 2 characters.'})
+        .max(64, {message: 'Address must be less than 64 characters.'})
+        .trim(),
+
 })

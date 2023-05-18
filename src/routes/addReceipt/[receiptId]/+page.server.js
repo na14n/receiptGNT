@@ -11,6 +11,7 @@ export const load = async ({locals, params}) => {
             const r_prod = serializeNonPOJOs(await locals.pb.collection('receipt_products').getFullList(undefined, {
                 filter: 'receipt = "'+receiptId+'"', expand: 'product'
             }))
+            // console.log(r_prod);
             return r_prod
         } catch (err) {
             console.log('Error: ',err);
@@ -50,21 +51,47 @@ export const load = async ({locals, params}) => {
 export const actions = {
     
     addProduct: async ({request, locals, params}) => {
-        const record = await locals.pb.collection('receipts').getFirstListItem('r_id ="'+params.receiptId+'"')
-        const formData = await request.formData()
-        formData.append('receipt', record.id)
-        const product = formData.get('product')
-        const qty = formData.get('qty')
-        const prod_rec = await locals.pb.collection('products').getFirstListItem('id="' + product + '"')
-        const subtotal = prod_rec.prod_price*qty
-        formData.append('subtotal', subtotal)
-        try {
-            await locals.pb.collection('receipt_products').create(formData)
-        } catch (err) {
-            console.log('Error: ', err);
-            throw error(err.status, err.messsage)
-        }
+        //Get the record of the receipt
 
+
+        const record = await locals.pb.collection('receipts').getFirstListItem('r_id ="'+params.receiptId+'"')
+        //Get form fata
+        const formData = Object.fromEntries(await request.formData())
+        //Append record Id to the form data
+        // formData.append('receipt', record.id)
+
+        // const product = formData.get('product')
+        // const qty = formData.get('qty')
+        const prod_rec = await locals.pb.collection('products').getFirstListItem('id="' + formData.product + '"')
+        const subtotal = prod_rec.prod_price*formData.qty
+        // formData.append('subtotal', subtotal)
+        console.log(formData);
+
+        try {
+         const exist =   await locals.pb.collection('receipt_products').getFirstListItem(undefined, {
+                filter: `receipt="${record.id}" && product="${formData.product}"`
+            })
+        if(exist){
+            const  uQty = parseInt(exist.qty) + parseInt(formData.qty)
+            const uSubtotal = prod_rec.prod_price*uQty
+            await locals.pb.collection('receipt_products').update(exist.id,{
+                qty: `${uQty}`,
+                subtotal: `${uSubtotal}`
+            })
+        }
+        } catch (err) {
+            if(err.status === 404 || 400){
+                await locals.pb.collection('receipt_products').create({
+                    qty: `${formData.qty}`,
+                    product: `${formData.product}`,
+                    receipt: `${record.id}`,
+                    subtotal: `${subtotal}`
+                })
+            } else {
+                console.log('Error: ', err);
+                throw error(err.status, err.messsage)
+            }
+        }
         throw redirect (303, '/addReceipt/'+params.receiptId)
     },
 

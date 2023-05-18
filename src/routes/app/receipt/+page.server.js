@@ -1,5 +1,7 @@
-import { error, redirect } from "@sveltejs/kit"
+import { error, fail, redirect } from "@sveltejs/kit"
 import {serializeNonPOJOs} from "$lib/utils"
+import { validateData} from "$lib/utils"
+import { updateReceiptSchema } from "$lib/schemas"
 
 
 export const load = async ({locals}) => {
@@ -37,7 +39,16 @@ export const actions = {
     },
 
     updateReceipt: async ({request, locals}) => {
-        const formData = Object.fromEntries(await request.formData())
+        const {formData, errors} = await validateData(await request.formData(), updateReceiptSchema)
+        
+        if (errors) {
+                return fail(400, {
+                    data: formData,
+                    errors: errors.fieldErrors
+                })
+    
+        }
+
          try {
             // console.log(formData);
             await locals.pb.collection('receipts').update(formData.id, formData)

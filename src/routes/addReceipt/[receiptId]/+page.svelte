@@ -7,11 +7,12 @@
 
     
     let loading = false
-    const submitRegister = () => {
+    const submitAdd = () => {
         loading =  true
         return async ({ result, update}) => {
             switch (result.type) {
                 case 'success':
+                    modalAdd = false;
                     await update()
                     break;
                 case 'invalid':
@@ -27,9 +28,10 @@
             loading = false; 
         };
     }
-
-
+    
     let modalAdd
+
+    
 </script>
 
 
@@ -125,7 +127,7 @@
                 </div>
                 <div slot="actions" class="flex w-full">
                     
-                    <form action="?/addProduct" method="POST" class="w-full" use:enhance={submitRegister}>
+                    <form action="?/addProduct" method="POST" class="w-full" use:enhance={submitAdd}>
                         <div class="block mb-2 text-sm text-gray-700 dark:text-gray-400">
                             <label for="" class="label font-semibold pb-1">
                                 <span><i class="fa-solid fa-boxes-stacked pr-3" style="color:#2563eb"></i>Choose a Product</span>
@@ -139,11 +141,9 @@
                             </select>
                         </div>
                         <Input class="text-blue-600" type="number" name="qty" id="qty" label="qty" placeholder="Product Quantity" i="fa-solid fa-hashtag pr-3" is="color:#2563eb" value="" disable={loading}/>
-                        <input type="hidden" name="id" value="" />
                         <div class="flex justify-end gap-x-4 pt-7 pr-5">
-                            <label for="modalAdd" class="btn btn-ghost text-gray-500">Cancel</label>
-                            <button class="btn btn-success hover:bg-emerald-300" disabled=
-                            {loading}>Add Product</button>
+                            <label for="modalAdd" class="btn btn-ghost text-gray-500" disabled={loading}>Cancel</label>
+                            <button class="btn btn-success hover:bg-emerald-300" disabled={loading}>Add Product</button>
                         </div>
                     </form>
                 </div>
@@ -155,7 +155,7 @@
                 <div class = "flex-col px-10">
                     <form action="?/saveProd" method="POST">
                         <input type="hidden" name="total" value={data.total}>
-                        <button class="btn bg-blue-600 hover:bg-blue-500 text-sky-100 border-0" disabled={loading}>Save Products</button>
+                        <button class="btn bg-blue-600 hover:bg-blue-500 text-sky-100 border-0"disabled={loading}>Save Products</button>
                     </form>
                 </div>
             </div>
