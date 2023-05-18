@@ -1,4 +1,4 @@
-import { error, redirect } from "@sveltejs/kit"
+import { error, fail, redirect } from "@sveltejs/kit"
 import {serializeNonPOJOs} from "$lib/utils"
 import { validateData} from "$lib/utils"
 import { updateProdSchema } from "$lib/schemas"
