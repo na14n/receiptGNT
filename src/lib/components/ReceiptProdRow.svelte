@@ -35,9 +35,9 @@
         return async ({ result, update}) => {
             switch (result.type) {
                 case 'success':
+                    modalDeleteOpen = false
+                    toast.success(`Product updated successfully`)
                     await update()
-                    toast.success(`Product deleted successfully`)
-                    modalUpdateOpen = false
                     break;
                 case 'invalid':
                     toast.error('Invalid input')
