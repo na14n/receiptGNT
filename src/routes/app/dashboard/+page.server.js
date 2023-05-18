@@ -82,7 +82,8 @@ export const load = async ({locals, params}) => {
     return {
         receipts: getReceipts(locals.user.id),
         weeklysales: getWeeklySales(locals.user.id),
-        products: getProducts(locals.user.id)
+        products: getProducts(locals.user.id),
+        user: locals.user
     }
 
 }
