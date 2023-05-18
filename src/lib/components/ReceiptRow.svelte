@@ -38,7 +38,8 @@
 			switch (result.type) {
 				case 'success':
 					modalDeleteOpen = false
-                    toast.success(`Product updated successfully`)
+                    toast.success(`Receipt deleted successfully`)
+					location.reload()
                     await update()
 				case 'invalid':
 					toast.error('Invalid input');

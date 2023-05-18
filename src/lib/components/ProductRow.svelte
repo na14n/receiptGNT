@@ -35,7 +35,8 @@
             switch (result.type) {
                 case 'success':
                     modalDeleteOpen = false
-                    toast.success(`Product updated successfully`)
+                    toast.success(`Product deleted successfully`)
+                    location.reload()
                     await update()
                     break;
                 case 'invalid':
